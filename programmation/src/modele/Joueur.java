@@ -12,6 +12,8 @@ public class Joueur {
 	private ArrayList<Quartier> main;
 	private boolean possedeCouronne;
 	
+	protected Personnage monPersonnage;
+	
 	private int truc = 0;
 	Random generateur = new Random();
 	
@@ -22,6 +24,7 @@ public class Joueur {
 		this.possedeCouronne = false;
 		this.cite = new Quartier[8];
 		this.main = new ArrayList<Quartier>();
+		this.monPersonnage = null;
 	}
 	
 	public String getNom() {
@@ -49,6 +52,12 @@ public class Joueur {
 	public void setPossedeCouronne(boolean b) {
 		this.possedeCouronne = b;
 	}
+	
+	public Personnage getPersonnage() {
+		return this.monPersonnage;
+	}
+
+	
 	
 	
 	

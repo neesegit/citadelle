@@ -40,6 +40,7 @@ public abstract class Personnage {
 	
 	public void setJoueur(Joueur j) {
 		this.joueur = j;
+		this.joueur.monPersonnage = this;
 	}
 	public void setVole() {
 		this.vole = true;
@@ -78,6 +79,7 @@ public abstract class Personnage {
 	
 	public void reinitialiser() {
 		this.joueur = null;
+		if(this.joueur.monPersonnage != null) {this.joueur.monPersonnage = null;}
 		this.vole = false;
 		this.assassine = false;
 	}

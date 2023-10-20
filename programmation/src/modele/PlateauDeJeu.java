@@ -11,8 +11,8 @@ public class PlateauDeJeu {
 	
 	public PlateauDeJeu() {
 		
-		this.listePersonnage = new Personnage[9];
 		this.listeJoueurs = new Joueur[9];
+		this.listePersonnage = new Personnage[9];
 		this.pioche = new Pioche();
 		this.nombrePersonnages = 0;
 		this.nombreJoueurs =  0;
@@ -51,6 +51,14 @@ public class PlateauDeJeu {
 		}
 		
 		this.listePersonnage[compteur] = p;
+		compteur++;
+	}
+	public void ajouterJoueur(Joueur j) {
+		if(j == null || compteur == this.listePersonnage.length) {
+			return;
+		}
+		
+		this.listeJoueurs[compteur] = j;
 		compteur++;
 	}
 	
