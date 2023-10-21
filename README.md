@@ -1,7 +1,7 @@
 # Projet android: citadelle
 
 Réaliser par:
-- Mathis
+- Matthis
 - Matthieu
 - Baptiste
 - Mattieu
