@@ -105,6 +105,7 @@ public class Joueur {
     public void ajouterQuartierDansMain(Quartier quartier){
 
         this.main.add(quartier);
+	//test commit
     }
 
     public Quartier retirerQuartierDansMain(){
