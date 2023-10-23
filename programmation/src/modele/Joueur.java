@@ -1,3 +1,5 @@
+package modele;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -67,7 +69,6 @@ public class Joueur {
         }
     }
 
-    //dea
     public void ajouterQuartierDansCite(Quartier quartier){
         if(this.nbQuartier < this.cite.length){
             this.cite[this.nbQuartier] = quartier;
