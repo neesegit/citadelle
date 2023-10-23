@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-package modele; 
-=======
 package modele;
->>>>>>> ef22ec066b119bcbaf042ad02f6cc2aa36aeb7ff
 
 public class Caracteristiques {
 	public static String ASSASSIN= 
