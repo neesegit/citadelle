@@ -68,6 +68,12 @@ public abstract class Personnage {
 		}
 		this.getJoueur().ajouterQuartierDansMain(nouveau);
 	}
+	public void construire(Quartier nouveau) {
+        if(this.getJoueur() == null || this.getAssassine() == true) {
+            return;
+        }
+        this.getJoueur().ajouterQuartierDansCite(nouveau);
+    }
 	public void percevoirRessourcesSpecifiques() {
 		if(this.getJoueur() == null || this.getAssassine() == true) {
 			return;
