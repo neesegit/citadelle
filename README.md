@@ -1,4 +1,4 @@
-# Projet android: citadelle
+# Projet logiciel: citadelle
 
 Réaliser par:
 - Matthis

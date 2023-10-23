@@ -69,6 +69,7 @@ public class Joueur {
         }
     }
 
+    //dea
     public void ajouterQuartierDansCite(Quartier quartier){
         if(this.nbQuartier < this.cite.length){
             this.cite[this.nbQuartier] = quartier;
@@ -116,9 +117,9 @@ public class Joueur {
         return temp;
     }
 
-    public void reinitialiser(){
-        this.tresor = 0;
-        this.nbQuartier = 0;
-        this.main.clear();
-    }
+	public void reinitialiser() {
+		this.tresor = 0;
+		this.nbQuartier = 0;
+		this.main.clear();
+	}
 }
