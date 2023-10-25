@@ -50,6 +50,7 @@ public class PlateauDeJeu {
         }
 
         this.listePersonnage[nombrePersonnages] = p;
+        p.setPlateau(this);
         nombrePersonnages++;
     }
     public void ajouterJoueur(Joueur j) {
