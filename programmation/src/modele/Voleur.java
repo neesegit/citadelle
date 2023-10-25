@@ -13,7 +13,7 @@ public class Voleur extends Personnage {
 	@Override
 	public void utiliserPouvoir() {
 		System.out.println("Quel personnage voulez-vous volez ? ");
-		for(int i = 0; i < getPlateau().getNombrePersonnages(); i++) {
+		for(int i = 0; i < getPlateau().getNombrePersonnages(); i++) { //TODO : Faire qu'un message apparaisse s'il se cible lui même et enlever les chiffres degeu si possible
 			System.out.println(i+1 + " " + getPlateau().getPersonnage(i));
 		}
 		while(!vole) {
@@ -25,6 +25,7 @@ public class Voleur extends Personnage {
 			} else {
 				vole = true;
 				cible.setVole();
+				getJoueur().ajouterPieces(2);
 			}
 		}
 	}

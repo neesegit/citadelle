@@ -46,6 +46,7 @@ public abstract class Personnage {
     }
     public void setVole() {
         this.vole = true;
+        getJoueur().retirerPieces(2);
     }
     public void setAssassine() {
         this.assassine = true;
