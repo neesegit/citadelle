@@ -7,7 +7,6 @@ public class PlateauDeJeu {
     private Pioche pioche;
     private int nombrePersonnages;
     private int nombreJoueurs;
-    private int compteur = 0;
 
     public PlateauDeJeu() {
 
@@ -46,20 +45,20 @@ public class PlateauDeJeu {
     }
 
     public void ajouterPersonnage(Personnage p) {
-        if(p == null || compteur == this.listePersonnage.length) {
+        if(p == null || nombrePersonnages == this.listePersonnage.length) {
             return;
         }
 
-        this.listePersonnage[compteur] = p;
-        compteur++;
+        this.listePersonnage[nombrePersonnages] = p;
+        nombrePersonnages++;
     }
     public void ajouterJoueur(Joueur j) {
-        if(j == null || compteur == this.listePersonnage.length) {
+        if(j == null || nombreJoueur == this.listePersonnage.length) {
             return;
         }
 
-        this.listeJoueurs[compteur] = j;
-        compteur++;
+        this.listeJoueurs[nombreJoueur] = j;
+        nombreJoueur++;
     }
 
 }
