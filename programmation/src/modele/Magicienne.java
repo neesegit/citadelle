@@ -27,7 +27,7 @@ public class Magicienne extends Personnage{
                     choix = true;
                     System.out.println("Avec quel personnage voulez-vous echanger vos cartes ?");
                     for(int i = 0; i < getPlateau().getNombrePersonnages(); i++) {//TODO : faire que le joueur ne soit pas visible et aussi que les chiffres moches ne soit plus là
-                        System.out.println(i+1 + " " + getPlateau().getPersonnage(i) + " " + getJoueur(i).nbQuartiersDansMain());//c'est le chiffre là
+                        System.out.println(i+1 + " " + getPlateau().getPersonnage(i) + " " + getJoueur().nbQuartiersDansMain());//c'est le chiffre là
                     }
                     while (!echange) {
                         System.out.println("Votre choix : ");
@@ -40,9 +40,10 @@ public class Magicienne extends Personnage{
                         }
                     }
                     //mtn il faut que je copie la main du joueur pour que ce soit la main de la magicienne
-                    for (int i = 0; i < getJoueur().nbQuartiersDansMain(); i++){
-                        String copie = getJoueur().getMain().get(i);// varaiable java le get// on choisi un a un les quartiers de la liste
-                        mainCopieMagicienne.add(copie);// pour les copié dans la main copie
+                    ArrayList<Quartier> mainCopieMagicienne = new ArrayList<>();
+                    ArrayList<Quartier> joueurMainCopie = getJoueur().getMain();
+                    for (Quartier quartier : joueurMainCopie) {
+                        mainCopieMagicienne.add(quartier);
                     }
 
                     //donc on utilise la copie de magicienne et de la cible en attendant
