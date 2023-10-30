@@ -59,9 +59,8 @@ public class Magicienne extends Personnage {
                     }
                 } else {
                     choix = true;
-                    System.out.println("Combien de cartes voulez vous échanger ? \n Le chiffre doit être inférieur à "
-                            + getJoueur().nbQuartiersDansMain() + 1);
-                    int reponseNbCarte = Interaction.lireUnEntier();
+                    System.out.println("Combien de cartes voulez vous échanger ?");
+                    int reponseNbCarte = Interaction.lireUnEntier(0, getJoueur().nbQuartiersDansMain() + 1);
                     if (reponseNbCarte == getJoueur().nbQuartiersDansMain()) {
                         // comme c'est son nombre de carte on bazarde tout
                         // on vide a main de la magicienne
