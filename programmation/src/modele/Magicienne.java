@@ -72,15 +72,20 @@ public class Magicienne extends Personnage {
                             getJoueur().ajouterQuartierDansMain(getPlateau().getPioche().piocher());
                         }
                     } else {
+
                         // ici il choisi
-                        ArrayList<Quartier> mainCopieMagicienne = getJoueur().getMain();// main de la
+                        ArrayList<Quartier> mainCopieMagicienne = (ArrayList<Quartier>) getJoueur().getMain().clone();// main
+                                                                                                                      // de
+                                                                                                                      // la
                         // créer la copie avec nouvelle carte
                         for (int i = 0; i < reponseNbCarte; i++) {
-                            System.out.println(
-                                    mainCopieMagicienne + "\nQuelle carte voulez vous échanger (indiquez son rang)");
-                            int index = Interaction.lireUnEntier();
-                            getPlateau().getPioche().ajouter(mainCopieMagicienne.get(index));
-                            mainCopieMagicienne.remove(index);
+                            System.out.println("Quelle carte voulez vous échanger (indiquez son rang 1, 2, 3 ...)");
+                            for (int a = 0; a < mainCopieMagicienne.size(); a++)
+                                System.out.print(mainCopieMagicienne.get(a).getNom() + ", ");
+                            System.out.println("\n");
+                            int index = Interaction.lireUnEntier(1, mainCopieMagicienne.size() + 1);
+                            getPlateau().getPioche().ajouter(mainCopieMagicienne.get(index - 1));
+                            mainCopieMagicienne.remove(index - 1);
                         }
                         for (int i = 0; i < reponseNbCarte; i++) {
                             mainCopieMagicienne.add(getPlateau().getPioche().piocher());
