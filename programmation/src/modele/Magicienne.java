@@ -10,8 +10,6 @@ public class Magicienne extends Personnage {
 
     public Magicienne() {
         super("Magicienne", 3, Caracteristiques.MAGICIENNE);
-        ArrayList<Quartier> mainCopieMagicienne = new ArrayList<Quartier>();
-        ArrayList<Quartier> mainCopieCible = new ArrayList<Quartier>();
     }
 
     @Override
@@ -21,24 +19,20 @@ public class Magicienne extends Personnage {
             System.out.println("Vous n'avez pas de cartes donc vous ne pouvez rien faire");
         } else {
             while (!choix) {
-                System.out.println(
-                        "Vous pouvez echanger toutes vos cartes avec celle d'un joueur(écrire 'toutes'), juste certaines avec la pioche (écrire 'certaines') ou aucune (écrire 'aucune')");
-                String reponse = Interaction.lireUneChaine();
-                if (reponse.equals("toutes")) {
+                System.out.println("Voulez-vous echanger vos cartes avec celles d’un autre joueur ?");
+                boolean reponse = Interaction.lireOuiOuNon();
+                if (reponse) {
                     choix = true;
                     System.out.println("Avec quel personnage voulez-vous echanger vos cartes ?");
                     for (int i = 0; i < getPlateau().getNombrePersonnages(); i++) {// TODO : faire que le joueur ne soit
                                                                                    // pas visible et aussi que les
                                                                                    // chiffres moches ne soit plus là
-                        System.out.println(
-                                i + 1 + " " + getPlateau().getPersonnage(i) + " " + getJoueur().nbQuartiersDansMain());// c'est
-                                                                                                                       // le
-                                                                                                                       // chiffre
-                                                                                                                       // là
+                        System.out.println(i + 1 + " " + getPlateau().getPersonnage(i).getNom() + " "
+                                + getJoueur().nbQuartiersDansMain());// c'est le chiffre là
                     }
                     while (!echange) {
                         System.out.println("Votre choix : ");
-                        int id = Interaction.lireUnEntier(1, getPlateau().getNombrePersonnages());
+                        int id = Interaction.lireUnEntier(1, getPlateau().getNombrePersonnages() + 1);
                         cible = getPlateau().getPersonnage(id - 1);
                         if (cible.getNom() == "Magicienne") {// je sais pas s'il y a des limite de rang a son pouvoir
                             System.out.println("Vous ne pouvez pas choisir ce personnage");
@@ -46,16 +40,14 @@ public class Magicienne extends Personnage {
                             echange = true;
                         }
                     }
-                    // mtn il faut que je copie la main du joueur
-                    ArrayList<Quartier> mainCopieMagicienne = getJoueur().getMain();// main de la magicienne / nouvelle
-                                                                                    // main cible
-                    ArrayList<Quartier> joueurMainCopie = cible.getJoueur().getMain();// main de la cible / nouvelle
-                                                                                      // main magicienne
+                    // mtn il faut que je copie la main du joueur et de la magicienne
+                    ArrayList<Quartier> mainCopieMagicienne = (ArrayList<Quartier>) getJoueur().getMain().clone();
+                    ArrayList<Quartier> joueurMainCopie = (ArrayList<Quartier>) cible.getJoueur().getMain().clone();
                     // on vide a main de la magicienne et de la cible
-                    for (int i = 0; i < getJoueur().nbQuartiersDansMain(); i++) {
+                    for (int i = 0; i <= getJoueur().nbQuartiersDansMain(); i++) {
                         getJoueur().retirerQuartierDansMain();
                     }
-                    for (int i = 0; i < cible.getJoueur().nbQuartiersDansMain(); i++) {
+                    for (int i = 0; i <= cible.getJoueur().nbQuartiersDansMain() + 1; i++) {
                         cible.getJoueur().retirerQuartierDansMain();
                     }
                     // on réatribut les mains
@@ -65,10 +57,11 @@ public class Magicienne extends Personnage {
                     for (int i = 0; i < joueurMainCopie.size(); i++) {
                         getJoueur().ajouterQuartierDansMain(joueurMainCopie.get(i));
                     }
-                } else if (reponse.equals("certaines")) {
+                } else {
                     choix = true;
-                    System.out.println("Combien de cartes voulez vous échanger");
-                    int reponseNbCarte = Interaction.lireUnEntier(0, getJoueur().nbQuartiersDansMain() + 1);
+                    System.out.println("Combien de cartes voulez vous échanger ? \n Le chiffre doit être inférieur à "
+                            + getJoueur().nbQuartiersDansMain() + 1);
+                    int reponseNbCarte = Interaction.lireUnEntier();
                     if (reponseNbCarte == getJoueur().nbQuartiersDansMain()) {
                         // comme c'est son nombre de carte on bazarde tout
                         // on vide a main de la magicienne
@@ -103,11 +96,6 @@ public class Magicienne extends Personnage {
                         }
 
                     }
-                } else if (reponse.equals("aucune")) {
-                    choix = true;
-                } else {
-                    System.out
-                            .println("Verifier que vous avez bien écris votre choix 'toutes' / 'certaines' / 'aucune'");
                 }
             }
         }
