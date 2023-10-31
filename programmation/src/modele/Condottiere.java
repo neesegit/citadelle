@@ -42,7 +42,7 @@ public class Condottiere extends Personnage {
                         System.out.println("Votre trésor n’est pas suffisant");
                     } else {
                         choix = true;
-                        cible.getJoueur()
+                        getJoueur()
                                 .retirerQuartierDansCite(cible.getJoueur().getCite()[quartierADetruire - 1].getNom());
                         getJoueur()
                                 .retirerPieces(cible.getJoueur().getCite()[quartierADetruire - 1].coutConstruction - 1);
