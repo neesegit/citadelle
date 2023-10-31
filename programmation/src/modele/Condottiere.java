@@ -37,14 +37,15 @@ public class Condottiere extends Personnage {
                     cible = getPlateau().getPersonnage(id - 1);
                     System.out.println("Quel quartier choisissez_vous ? ");
                     quartierADetruire = Interaction.lireUnEntier(1, cible.getJoueur().nbQuartiersDansCite() + 1);
-                    if (cible.getJoueur().getCite()[quartierADetruire - 1].coutConstruction > getJoueur().nbPieces()
-                            + 1) {
+                    if (cible.getJoueur().getCite()[quartierADetruire - 1].coutConstruction - 1 > getJoueur()
+                            .nbPieces()) {
                         System.out.println("Votre trésor n’est pas suffisant");
                     } else {
                         choix = true;
                         cible.getJoueur()
                                 .retirerQuartierDansCite(cible.getJoueur().getCite()[quartierADetruire - 1].getNom());
-                        getJoueur().retirerPieces(cible.getJoueur().getCite()[quartierADetruire - 1].coutConstruction);
+                        getJoueur()
+                                .retirerPieces(cible.getJoueur().getCite()[quartierADetruire - 1].coutConstruction - 1);
                     }
                 }
             }
