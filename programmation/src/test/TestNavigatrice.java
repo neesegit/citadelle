@@ -3,6 +3,7 @@ package test;
 import modele.Caracteristiques;
 import modele.PlateauDeJeu;
 import modele.Quartier;
+import modele.Navigatrice;
 
 public class TestNavigatrice {
     public static void main(String[] args) {
