@@ -62,7 +62,7 @@ public class Caracteristiques {
 		"d'or ou 1 carte.";
 	public static String CARDINAL=
 		"Si le Cardinal n'a pas assez d'or pour batir un quartier, " +
-		"il peut le prendre a un joueur en �change de carte (1 " +
+		"il peut le prendre a un joueur en echange de carte (1 " +
 		"carte = 1 piece d'or). Chaque quartier Religieux dans sa " +
 		"cite lui rapport 1 carte quartier.";
 	public static String EVEQUE=

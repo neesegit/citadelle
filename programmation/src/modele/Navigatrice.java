@@ -17,13 +17,11 @@ public class Navigatrice extends Personnage{
             System.out.print("Prendre (p)ieces ou piochez (c)artes : ");
             String choix = Interaction.lireUneChaine();
             if(choix == "p"){
-                for(int i = 0; i < 2; i++){
-                    ajouterPieces();
-                }
+                this.getJoueur().ajouterPieces(4);
                 return;
             } else if(choix == "c"){
                 for(int i = 0; i < 4; i++){
-                    getJoueur().ajouterQuartierDansMain(pioche.piocher());
+                    this.getJoueur().ajouterQuartierDansMain(pioche.piocher()); //this.getJoueur() ... ?
                 }
                 return;
             }

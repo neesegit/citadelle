@@ -16,7 +16,7 @@ public class Espion extends Personnage{
         System.out.print("Quel type de quartier (Noble, Militaire, Religieux, Commercant ou Merveille) choisissez vous ? ");
         String choix = Interaction.lireUneChaine();
 
-        
+        //TODO faire la classe
         
 	}
 }
