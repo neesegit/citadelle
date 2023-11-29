@@ -29,14 +29,15 @@ public class TestAbbe {
 
     public void test2() {
         System.out.println(
-                "TEST DE LA PERCEPTION DE RESSOURCES SPECIFIQUES + PASSIF (sachant que l'abbe est le plus riche)");
+                "TEST DE LA PERCEPTION DE RESSOURCES SPECIFIQUES + PASSIF (sachant que l'abbe n'est le plus riche)");
+        PlateauDeJeu plateau = new PlateauDeJeu();
         Joueur joueur = new Joueur("Billy");
         plateau.ajouterJoueur(joueur);
         Joueur joueur2 = new Joueur("Martin");
         plateau.ajouterJoueur(joueur2);
         Joueur joueur3 = new Joueur("Emma");
         plateau.ajouterJoueur(joueur3);
-        Abbe eveque = new Abbe();
+        Abbe abbe = new Abbe();
         Quartier quartier1 = new Quartier("temple", Quartier.TYPE_QUARTIERS[0], 1);
         Quartier quartier2 = new Quartier("prison", Quartier.TYPE_QUARTIERS[1], 2);
         Quartier quartier3 = new Quartier("église", Quartier.TYPE_QUARTIERS[0], 2);
@@ -45,7 +46,6 @@ public class TestAbbe {
         Test.test(abbe.getJoueur().nbPieces() == 2, "test du nombre de pieces d'or avant perception");
         Test.test(plateau.getNombrePersonnages() == 3, "nombre de joueurs");
         // creation d'une pioche:
-        PlateauDeJeu plateau = new PlateauDeJeu();
         Pioche pioche = plateau.getPioche();
         Quartier q = new Quartier("temple", Quartier.TYPE_QUARTIERS[0], 1);
         pioche.ajouter(q);
@@ -73,6 +73,8 @@ public class TestAbbe {
 
         joueur.ajouterQuartierDansMain(pioche.piocher());
         joueur.ajouterQuartierDansMain(pioche.piocher());
+        Test.test(abbe.getJoueur().nbQuartiersDansMain() == 2,
+                "test du nombre de carte apres perception de ressources specifique avec 2 quartiers religieux");
         abbe.construire(quartier1);
         abbe.construire(quartier2);
         abbe.construire(quartier3);
@@ -81,24 +83,24 @@ public class TestAbbe {
             Test.test(abbe.getJoueur().nbPieces() == 4,
                     "test du nombre de pieces d'or apres perception de ressources specifiques et abbe le plus riche avec 2 quartiers religieux");
             Test.test(abbe.getJoueur().nbQuartiersDansMain() == 2,
-                    "test du nombre de pieces d'or apres perception de ressources specifique avec 2 quartiers religieux");
+                    "test du nombre de carte apres perception de ressources specifique avec 2 quartiers religieux");
         }
         if (abbe.abbe.getJoueur().nbPieces() == 3) {
             Test.test(abbe.getJoueur().nbPieces() == 3,
                     "test du nombre de pieces d'or apres perception de ressources specifiques et abbe le plus riche avec 2 quartiers religieux");
             Test.test(abbe.getJoueur().nbQuartiersDansMain() == 3,
-                    "test du nombre de pieces d'or apres perception de ressources specifique avec 2 quartiers religieux");
+                    "test du nombre de carte apres perception de ressources specifique avec 2 quartiers religieux");
         }
         if (abbe.abbe.getJoueur().nbPieces() == 2) {
             Test.test(abbe.getJoueur().nbPieces() == 2,
                     "test du nombre de pieces d'or apres perception de ressources specifiques et abbe le plus riche avec 2 quartiers religieux");
             Test.test(abbe.getJoueur().nbQuartiersDansMain() == 4,
-                    "test du nombre de pieces d'or apres perception de ressources specifique avec 2 quartiers religieux");
+                    "test du nombre de carte apres perception de ressources specifique avec 2 quartiers religieux");
         }
         Test.test(abbe.getJoueur().nbPieces() == 0,
                 "test du nombre de pieces d'or apres perception de ressources specifiques et abbe le plus riche avec 2 quartiers religieux (n'as pas passe le test)");
         Test.test(abbe.getJoueur().nbQuartiersDansMain() == 0,
-                "test du nombre de pieces d'or apres perception de ressources specifique avec 2 quartiers religieux (n'as pas passe le test)");
+                "test du nombre de carte apres perception de ressources specifique avec 2 quartiers religieux (n'as pas passe le test)");
         // pendant la preception de ressource spécifique il faut que le joueur avec le
         // plus d'or lui donne 1 piece d'or suaf si c'est l'abbe
         // tester une fois il prend une piece d'or
@@ -108,13 +110,15 @@ public class TestAbbe {
     public void test3() {
         System.out.println(
                 "TEST DE LA PERCEPTION DE RESSOURCES SPECIFIQUES + PASSIF (sachant que l'abbe n'est le plus riche)");
+        PlateauDeJeu plateau = new PlateauDeJeu();
         Joueur joueur = new Joueur("Billy");
         plateau.ajouterJoueur(joueur);
         Joueur joueur2 = new Joueur("Martin");
         plateau.ajouterJoueur(joueur2);
         Joueur joueur3 = new Joueur("Emma");
         plateau.ajouterJoueur(joueur3);
-        Abbe eveque = new Abbe();
+        Marchande marchande = new Marchande();
+        Abbe abbe = new Abbe();
         Quartier quartier1 = new Quartier("temple", Quartier.TYPE_QUARTIERS[0], 1);
         Quartier quartier2 = new Quartier("prison", Quartier.TYPE_QUARTIERS[1], 2);
         Quartier quartier3 = new Quartier("église", Quartier.TYPE_QUARTIERS[0], 2);
@@ -128,7 +132,6 @@ public class TestAbbe {
                 "test du nombre de pieces d'or avant perception, supremacie marchande");
         Test.test(plateau.getNombrePersonnages() == 3, "nombre de joueurs");
         // creation d'une pioche:
-        PlateauDeJeu plateau = new PlateauDeJeu();
         Pioche pioche = plateau.getPioche();
         Quartier q = new Quartier("temple", Quartier.TYPE_QUARTIERS[0], 1);
         pioche.ajouter(q);
@@ -156,6 +159,8 @@ public class TestAbbe {
 
         joueur.ajouterQuartierDansMain(pioche.piocher());
         joueur.ajouterQuartierDansMain(pioche.piocher());
+        Test.test(abbe.getJoueur().nbQuartiersDansMain() == 2,
+                "test du nombre de carte apres perception de ressources specifique avec 2 quartiers religieux");
         abbe.construire(quartier1);
         abbe.construire(quartier2);
         abbe.construire(quartier3);
