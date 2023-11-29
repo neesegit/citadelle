@@ -85,6 +85,10 @@ public class Joueur {
             System.out.println("trop de quartier");
             return;
         }
+        if(this.getNom() == "Navigatrice"){
+            System.out.println("Vous n'avez pas le droit de construire");
+            return;
+        }
         this.cite[this.nbQuartier] = quartier;
         this.nbQuartier++;
     }
