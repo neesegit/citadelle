@@ -25,7 +25,7 @@ public class Caracteristiques {
 		"indique, il recoit 1 piece d'or de ce joueur et pioche 1 " +
 		"carte Quartier.";
 	public static String VOLEUR=
-		"Le Voleur peut piller le tr�sor du personnage de son choix. " +
+		"Le Voleur peut piller le tresor du personnage de son choix. " +
 		"Quand le personnage detrousse sera revele, il donnera tout " +
 		"son or au Voleur.";
 	public static String MAGICIENNE=
@@ -70,8 +70,8 @@ public class Caracteristiques {
 		"de rang 8 (gemme rouge). Chaque quartier Religieux dans sa "+
 		"cite lui rapport 1 piece d'or";
 	public static String ALCHIMISTE=
-		"A la fin de son tour, l'Alchimiste r�cup�re l'or qu'il a " +
-		"d�pens� pour b�tir des quartiers durant son tour.";
+		"A la fin de son tour, l'Alchimiste recupere l'or qu'il a " +
+		"depense pour batir des quartiers durant son tour.";
 	public static String MARCHANDE=
 		"La Marchande recoit 1 piece d'or supplementaire. Chaque " +
 		"quartier Commercant dans sa cite lui rapporte 1 piece d'or.";
