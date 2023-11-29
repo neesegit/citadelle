@@ -85,6 +85,7 @@ public abstract class Personnage {
     }
 
     public abstract void utiliserPouvoir();
+    public abstract void utiliserPouvoirAvatar();
 
     public void reinitialiser() {
         if(this.joueur.monPersonnage != null) {this.joueur.monPersonnage = null;}
