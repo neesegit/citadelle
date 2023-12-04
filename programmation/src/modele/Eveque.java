@@ -9,16 +9,16 @@ public class Eveque extends Personnage {
 
     @Override
     public void percevoirRessourcesSpecifiques() {
-        if (getJoueur().quartierPresentDansCite("temple")) {
+        if (this.getJoueur().quartierPresentDansCite("temple")) {
             compteur++;
         }
-        if (getJoueur().quartierPresentDansCite("église")) {
+        if (this.getJoueur().quartierPresentDansCite("église")) {
             compteur++;
         }
-        if (getJoueur().quartierPresentDansCite("monastère")) {
+        if (this.getJoueur().quartierPresentDansCite("monastère")) {
             compteur++;
         }
-        if (getJoueur().quartierPresentDansCite("cathédrale")) {
+        if (this.getJoueur().quartierPresentDansCite("cathédrale")) {
             compteur++;
         }
         this.getJoueur().ajouterPieces(compteur);
