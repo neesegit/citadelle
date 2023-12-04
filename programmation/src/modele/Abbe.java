@@ -10,6 +10,8 @@ public class Abbe extends Personnage {
     private boolean boucle;
     private String choix;
 
+    private int quelJoueur = 0;
+    private int[] nbPiecesPersonnage = new int[plateau.getNombreJoueurs()];
     private String[] religieux = {"temple", "église", "monastère", "cathédrale"};
     
     public Abbe(){
@@ -43,7 +45,15 @@ public class Abbe extends Personnage {
 
         for(int i = 0; i < plateau.getNombreJoueurs(); i++){
             // TODO voir le personnage avec le plus d'or
+            nbPiecesPersonnage[i] = plateau.getJoueur(i).nbPieces();
         }
+        for(int i = 0; i < plateau.getNombreJoueurs(); i++){
+            if(nbPiecesPersonnage[quelJoueur] < nbPiecesPersonnage[i]){
+                quelJoueur = i;
+            }
+        }
+        plateau.getJoueur(quelJoueur).retirerPieces(1);
+        this.getJoueur().ajouterPieces(1);
 
     }
 
