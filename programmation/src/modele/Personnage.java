@@ -9,6 +9,7 @@ public abstract class Personnage {
     private boolean assassine;
     private boolean vole;
     private PlateauDeJeu plateau;
+    private boolean DejaConstruitUnTruc;
 
     public Personnage(String nom, int rang, String caracteristiques) {
         this.nom = nom;
@@ -17,6 +18,9 @@ public abstract class Personnage {
         this.joueur = null;
         this.assassine = false;
         this.vole = false;
+        this.DejaConstruitUnTruc = true;
+        // il y a un perso qui peut construire deux fois attention a changer pendant le
+        // pouvoir.
     }
 
     public String getNom() {
@@ -82,14 +86,18 @@ public abstract class Personnage {
     }
 
     public void construire(Quartier nouveau) {
-        if (this.getJoueur() == null || this.getAssassine() == true) {
-            return;
+        if (DejaConstruitUnTruc) {
+            if (this.getJoueur() == null || this.getAssassine() == true) {
+                return;
+            }
+            if (this.getJoueur().nbPieces() < nouveau.coutConstruction) {
+                System.out.println("Vous n'avez pas  d'or pour construire ce quartier");
+                return;
+            }
+            this.getJoueur().ajouterQuartierDansCite(nouveau);
+            DejaConstruitUnTruc = false;
         }
-        if (this.getJoueur().nbPieces() < nouveau.coutConstruction) {
-            System.out.println("Vous n'avez pas  d'or pour construire ce quartier");
-            return;
-        }
-        this.getJoueur().ajouterQuartierDansCite(nouveau);
+        System.out.println("Vous construit un quartier dans ce tour");
     }
 
     public void percevoirRessourcesSpecifiques() {
