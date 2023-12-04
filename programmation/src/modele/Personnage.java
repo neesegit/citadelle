@@ -22,18 +22,23 @@ public abstract class Personnage {
     public String getNom() {
         return this.nom;
     }
+
     public int getRang() {
         return this.rang;
     }
+
     public String getCaracteristiques() {
         return this.caracteristiques;
     }
+
     public Joueur getJoueur() {
         return this.joueur;
     }
+
     public boolean getAssassine() {
         return this.assassine;
     }
+
     public boolean getVole() {
         return this.vole;
     }
@@ -44,10 +49,12 @@ public abstract class Personnage {
             this.joueur.monPersonnage = this;
         }
     }
+
     public void setVole() {
         this.vole = true;
         getJoueur().retirerPieces(2);
     }
+
     public void setAssassine() {
         this.assassine = true;
     }
@@ -55,30 +62,38 @@ public abstract class Personnage {
     public PlateauDeJeu getPlateau() {
         return this.plateau;
     }
+
     public void setPlateau(PlateauDeJeu p) {
         this.plateau = p;
     }
 
     public void ajouterPieces() {
-        if(this.getJoueur() == null || this.getAssassine() == true) {
+        if (this.getJoueur() == null || this.getAssassine() == true) {
             return;
         }
         this.getJoueur().ajouterPieces(2);
     }
+
     public void ajouterQuartier(Quartier nouveau) {
-        if(this.getJoueur() == null || this.getAssassine() == true) {
+        if (this.getJoueur() == null || this.getAssassine() == true) {
             return;
         }
         this.getJoueur().ajouterQuartierDansMain(nouveau);
     }
+
     public void construire(Quartier nouveau) {
-        if(this.getJoueur() == null || this.getAssassine() == true) {
+        if (this.getJoueur() == null || this.getAssassine() == true) {
+            return;
+        }
+        if (this.getJoueur().nbPieces() < nouveau.coutConstruction) {
+            System.out.println("Vous n'avez pas  d'or pour construire ce quartier");
             return;
         }
         this.getJoueur().ajouterQuartierDansCite(nouveau);
     }
+
     public void percevoirRessourcesSpecifiques() {
-        if(this.getJoueur() == null || this.getAssassine() == true) {
+        if (this.getJoueur() == null || this.getAssassine() == true) {
             return;
         }
         System.out.println("Aucune ressource spécifique");
@@ -87,7 +102,9 @@ public abstract class Personnage {
     public abstract void utiliserPouvoir();
 
     public void reinitialiser() {
-        if(this.joueur.monPersonnage != null) {this.joueur.monPersonnage = null;}
+        if (this.joueur.monPersonnage != null) {
+            this.joueur.monPersonnage = null;
+        }
         this.vole = false;
         this.assassine = false;
         this.joueur = null;

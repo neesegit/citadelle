@@ -35,6 +35,8 @@ public class TestNavigatrice {
 
         Quartier quartier1 = new Quartier("temple", Quartier.TYPE_QUARTIERS[0], 1);
         Test.test(navigatrice.getJoueur().nbQuartiersDansCite() == 0, "test initialisation de la cite vide");
+        // je suis pas sur car là ça construit direct mais peut etre que l'interdiction
+        // vas être au dessus
         navigatrice.construire(quartier1);
         Test.test(navigatrice.getJoueur().nbQuartiersDansCite() == 0, "test la cite elle doit reste vide");
     }
