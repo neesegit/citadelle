@@ -74,7 +74,7 @@ public class Joueur {
             return;
         }
         if(this.tresor-moins < 0) {
-            System.out.println("Le nombre choisis doit être positif est trop grand");
+            System.out.println("Le nombre choisis est trop grand");
             return;
         }
         this.tresor -= moins;

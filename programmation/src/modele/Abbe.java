@@ -11,9 +11,12 @@ public class Abbe extends Personnage {
     private String choix;
 
     private int quelJoueur = 0;
+    private int pasPlusRiche = 0;
     private int[] nbPiecesPersonnage = new int[plateau.getNombreJoueurs()];
     private String[] religieux = {"temple", "église", "monastère", "cathédrale"};
     
+    private Joueur joueur;
+
     public Abbe(){
         super("Abbe", 5, Caracteristiques.ABBE);
     }
@@ -44,16 +47,18 @@ public class Abbe extends Personnage {
         // LE PERSONNAGE LE PLUS RICHE DONNE 1 PIECE D OR A L ABBE
 
         for(int i = 0; i < plateau.getNombreJoueurs(); i++){
-            // TODO voir le personnage avec le plus d'or
             nbPiecesPersonnage[i] = plateau.getJoueur(i).nbPieces();
+            if(nbPiecesPersonnage[i] == 0) pasPlusRiche++;
         }
+        if(pasPlusRiche == plateau.getNombreJoueurs()) return;
         for(int i = 0; i < plateau.getNombreJoueurs(); i++){
             if(nbPiecesPersonnage[quelJoueur] < nbPiecesPersonnage[i]){
                 quelJoueur = i;
             }
         }
-        plateau.getJoueur(quelJoueur).retirerPieces(1);
-        this.getJoueur().ajouterPieces(1);
+        joueur = plateau.getJoueur(quelJoueur);
+        joueur.retirerPieces(1);
+        this.getJoueur().ajouterPieces((joueur.nbPieces() == 0?0:1));
 
     }
 
