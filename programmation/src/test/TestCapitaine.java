@@ -1,6 +1,7 @@
 package test;
 
 import modele.Caracteristiques;
+import modele.Eveque;
 import modele.Joueur;
 import modele.PlateauDeJeu;
 import modele.Quartier;
@@ -12,6 +13,7 @@ public class TestCapitaine {
         // test.test1();
         // test.test2();
         // test.test3();
+        // test.test4();
     }
 
     public void test1() {
@@ -49,8 +51,9 @@ public class TestCapitaine {
         roi.getJoueur().ajouterQuartierDansCite(quartier4);
         roi.getJoueur().ajouterQuartierDansCite(quartier5);
         roi.getJoueur().ajouterQuartierDansCite(quartier1);
+        roi.getJoueur().ajouterQuartierDansCite(quartier2);
         capitaine.getJoueur().ajouterQuartierDansCite(quartier2);
-        Test.test(roi.getJoueur().nbQuartiersDansCite() == 4, "nombre de quartier chez le roi avant de commencer");
+        Test.test(roi.getJoueur().nbQuartiersDansCite() == 5, "nombre de quartier chez le roi avant de commencer");
         Test.test(capitaine.getJoueur().nbQuartiersDansCite() == 1,
                 "nombre de quartier chez la capitaine avant de commencer");
         Test.test(capitaine.getJoueur().nbPieces() == 4, "nombre de piece de la capitaine avant de commencer");
@@ -63,7 +66,7 @@ public class TestCapitaine {
                     "nombre de quartier chez la capitaine apres pouvoir");
             Test.test(capitaine.getJoueur().nbPieces() == 4,
                     "nombre de piece de la capitaine apres pouvoir (vole de 1)");
-            Test.test(roi.getJoueur().nbQuartiersDansCite() == 3, "nombre de quartier chez le roi apres vole");
+            Test.test(roi.getJoueur().nbQuartiersDansCite() == 4, "nombre de quartier chez le roi apres vole");
             Test.test(roi.getJoueur().nbPieces() == 1,
                     "nombre de piece du roi apres pouvoir de la capitaine (vole de 1)");
         } else if (capitaine.getJoueur().quartierPresentDansCite("église")) {
@@ -71,7 +74,7 @@ public class TestCapitaine {
                     "nombre de quartier chez la capitaine apres pouvoir");
             Test.test(capitaine.getJoueur().nbPieces() == 3,
                     "nombre de piece de la capitaine apres pouvoir (vole de 2)");
-            Test.test(roi.getJoueur().nbQuartiersDansCite() == 3, "nombre de quartier chez le roi apres vole");
+            Test.test(roi.getJoueur().nbQuartiersDansCite() == 4, "nombre de quartier chez le roi apres vole");
             Test.test(roi.getJoueur().nbPieces() == 2,
                     "nombre de piece du roi apres pouvoir de la capitaine (vole de 2)");
         } else {
@@ -79,10 +82,11 @@ public class TestCapitaine {
                     "nombre de quartier chez la capitaine apres pouvoir");
             Test.test(capitaine.getJoueur().nbPieces() == 2,
                     "nombre de piece de la capitaine apres pouvoir (vole de 3)");
-            Test.test(roi.getJoueur().nbQuartiersDansCite() == 3, "nombre de quartier chez le roi apres vole");
+            Test.test(roi.getJoueur().nbQuartiersDansCite() == 4, "nombre de quartier chez le roi apres vole");
             Test.test(roi.getJoueur().nbPieces() == 3,
                     "nombre de piece du roi apres pouvoir de la capitaine (vole de 3)");
-        } // quand on fait le test veriffier que le vole de palais n'est pas possible
+        } // quand on fait le test veriffier que le vole de palais et de la prison n'est
+          // pas possible
     }
 
     public void test3() {
@@ -112,5 +116,37 @@ public class TestCapitaine {
         Test.test(capitaine.getJoueur().nbPieces() == 0, "nombre de piece de la capitaine apres pouvoir sans or");
         Test.test(roi.getJoueur().nbQuartiersDansCite() == 1,
                 "nombre de quartier chez le roi apres pouvoir capitaine sans or");
+    }
+
+    public void test4() {
+        System.out.println("TEST DU POUVOIR COUNTER DE EVEQUE");
+        PlateauDeJeu plateau = new PlateauDeJeu();
+        Joueur joueur = new Joueur("Billy");
+        plateau.ajouterJoueur(joueur);
+        Joueur joueur2 = new Joueur("Uge");
+        plateau.ajouterJoueur(joueur2);
+        Capitaine capitaine = new Capitaine();
+        Eveque eveque = new Eveque();
+        capitaine.setJoueur(joueur);
+        eveque.setJoueur(joueur2);
+        Test.test(plateau.getNombrePersonnages() == 2, "nombre de joueurs");
+        Quartier quartier1 = new Quartier("temple", Quartier.TYPE_QUARTIERS[0], 1);
+        eveque.getJoueur().ajouterQuartierDansCite(quartier1);
+        Test.test(eveque.getJoueur().nbQuartiersDansCite() == 1,
+                "nombre de quartier chez le eveque avant de commencer");
+        Test.test(capitaine.getJoueur().nbQuartiersDansCite() == 0,
+                "nombre de quartier chez la capitaine avant de commencer");
+        capitaine.ajouterPieces();
+        Test.test(capitaine.getJoueur().nbPieces() == 2, "nombre de piece de la capitaine avant de commencer");
+        capitaine.percevoirRessourcesSpecifiques();
+        Test.test(capitaine.getJoueur().nbPieces() == 2,
+                "nombre de piece de la capitaine apres perception des ressources");
+        capitaine.utiliserPouvoir();
+        Test.test(capitaine.getJoueur().nbQuartiersDansCite() == 0,
+                "nombre de quartier chez la capitaine counter par l'eveque");
+        Test.test(capitaine.getJoueur().nbPieces() == 2,
+                "nombre de piece de la capitaine apres pouvoir counter par l eveque");
+        Test.test(eveque.getJoueur().nbQuartiersDansCite() == 1,
+                "nombre de quartier chez l eveque apres pouvoir capitaine counter");
     }
 }
