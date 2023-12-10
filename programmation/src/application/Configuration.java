@@ -1,6 +1,7 @@
 package application;
 
-import modele.Pioche;
+import controleur.Interaction;
+import modele.*;
 
 import modele.*;
 
@@ -51,6 +52,7 @@ public class Configuration {
     private static Quartier tresor_imperial = new Quartier("Trésor Impérial", Quartier.TYPE_QUARTIERS[4], 5);
     private static Quartier fontaine_souhaits = new Quartier("Fontaine aux Souhaits", Quartier.TYPE_QUARTIERS[4], 5);
     private static Quartier tripot = new Quartier("Tripot", Quartier.TYPE_QUARTIERS[4], 6);
+
     private static Quartier basilique = new Quartier("Basilique", Quartier.TYPE_QUARTIERS[4], 4);
     private static Quartier capitole = new Quartier("Capitole", Quartier.TYPE_QUARTIERS[4], 5);
     private static Quartier catacombes = new Quartier("Catacombes", Quartier.TYPE_QUARTIERS[4], 0);
@@ -118,7 +120,29 @@ public class Configuration {
 		plateauDeJeu.ajouterPersonnage(roi);
 		plateauDeJeu.ajouterPersonnage(voleur);
 		
-		plateauDeJeu.ajouterJoueur(joueur);
+
+		System.out.println("Combien de joueur(s) pour cette partie (max : 9) ?");
+        int nbJoueur=Interaction.lireUnEntier(1, 9);
+        for(int i=0;i<nbJoueur;i++){
+            System.out.print("Entrez le nom du joueur " + (i + 1) + " : ");
+            String nomDuJoueur=Interaction.lireUneChaine();
+            Joueur nouveauJoueur=new Joueur(nomDuJoueur);
+            nouveauJoueur.setType(false);
+            plateauDeJeu.ajouterJoueur(nouveauJoueur);
+        }
+        System.out.println("Voulez-vous ajouter des bots ?");
+        boolean choix=Interaction.lireOuiOuNon();
+        if(choix){
+            System.out.println("Combien de bots voulez-vous (max : "+(9-nbJoueur)+")");
+            int nbBots=Interaction.lireUnEntier(1, 9-nbJoueur);
+            int i = nbJoueur;
+            while (i <= nbBots) {
+                Joueur nouveauJoueur=new Joueur("Boti" + (i - nbJoueur + 1));
+                nouveauJoueur.setType(true);
+                plateauDeJeu.ajouterJoueur(nouveauJoueur);
+                i++;
+            }
+        }
 
         pioche.ajouter(bibliotheque);
         pioche.ajouter(forge);
@@ -134,6 +158,7 @@ public class Configuration {
         pioche.ajouter(tresor_imperial);
         pioche.ajouter(fontaine_souhaits);
         pioche.ajouter(tripot);
+
         pioche.ajouter(basilique);
         pioche.ajouter(capitole);
         pioche.ajouter(catacombes);
@@ -150,6 +175,7 @@ public class Configuration {
         pioche.ajouter(poudriere);
         pioche.ajouter(theatre);
         pioche.ajouter(tour_divoire);
+
 
         pioche.melanger();
 
