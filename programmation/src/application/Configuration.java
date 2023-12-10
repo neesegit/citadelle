@@ -51,6 +51,22 @@ public class Configuration {
     private static Quartier tresor_imperial = new Quartier("Trésor Impérial", Quartier.TYPE_QUARTIERS[4], 5);
     private static Quartier fontaine_souhaits = new Quartier("Fontaine aux Souhaits", Quartier.TYPE_QUARTIERS[4], 5);
     private static Quartier tripot = new Quartier("Tripot", Quartier.TYPE_QUARTIERS[4], 6);
+    private static Quartier basilique = new Quartier("Basilique", Quartier.TYPE_QUARTIERS[4], 4);
+    private static Quartier capitole = new Quartier("Capitole", Quartier.TYPE_QUARTIERS[4], 5);
+    private static Quartier catacombes = new Quartier("Catacombes", Quartier.TYPE_QUARTIERS[4], 0);
+    private static Quartier chantier = new Quartier("Chantier", Quartier.TYPE_QUARTIERS[4], 3);
+    private static Quartier ecuries = new Quartier("Ecuries", Quartier.TYPE_QUARTIERS[4], 2);
+    private static Quartier grande_muraille = new Quartier("Grande Muraille", Quartier.TYPE_QUARTIERS[4], 6);
+    private static Quartier hospice = new Quartier("Hospice", Quartier.TYPE_QUARTIERS[4], 4);
+    private static Quartier mine_dor = new Quartier("Mine d'Or", Quartier.TYPE_QUARTIERS[4], 6);
+    private static Quartier monument = new Quartier("Monument", Quartier.TYPE_QUARTIERS[4], 4);
+    private static Quartier musee = new Quartier("Musée", Quartier.TYPE_QUARTIERS[4], 4);
+    private static Quartier necropole = new Quartier("Nécropole", Quartier.TYPE_QUARTIERS[4], 5);
+    private static Quartier observatoire = new Quartier("Observatoire", Quartier.TYPE_QUARTIERS[4], 4);
+    private static Quartier parc = new Quartier("Parc", Quartier.TYPE_QUARTIERS[4], 6);
+    private static Quartier poudriere = new Quartier("Poudri", Quartier.TYPE_QUARTIERS[4], 3);
+    private static Quartier theatre = new Quartier("Théâtre", Quartier.TYPE_QUARTIERS[4], 6);
+    private static Quartier tour_divoire = new Quartier("Tour d’Ivoire", Quartier.TYPE_QUARTIERS[4], 6);
 	
     private static Joueur joueur = new Joueur("Steve");
     
@@ -118,6 +134,22 @@ public class Configuration {
         pioche.ajouter(tresor_imperial);
         pioche.ajouter(fontaine_souhaits);
         pioche.ajouter(tripot);
+        pioche.ajouter(basilique);
+        pioche.ajouter(capitole);
+        pioche.ajouter(catacombes);
+        pioche.ajouter(ecuries);
+        pioche.ajouter(grande_muraille);
+        pioche.ajouter(chantier);
+        pioche.ajouter(hospice);
+        pioche.ajouter(mine_dor);
+        pioche.ajouter(monument);
+        pioche.ajouter(musee);
+        pioche.ajouter(necropole);
+        pioche.ajouter(observatoire);
+        pioche.ajouter(parc);
+        pioche.ajouter(poudriere);
+        pioche.ajouter(theatre);
+        pioche.ajouter(tour_divoire);
 
         pioche.melanger();
 
