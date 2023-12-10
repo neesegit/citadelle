@@ -43,4 +43,5 @@ public class TestEveque {
         Test.test(eveque.getJoueur().nbPieces() == 4,
                 "test du nombre de pi�ces d'or apr�s perception de ressources sp�cifiques avec 2 quartiers religieux");
     }
+    // pas oublier qu'il counter les personnage de rang 8
 }

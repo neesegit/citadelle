@@ -78,7 +78,7 @@ public class Joueur {
             return;
         }
         if(this.tresor-moins < 0) {
-            System.out.println("Le nombre choisis doit être positif est trop grand");
+            System.out.println("Le nombre choisis est trop grand");
             return;
         }
         this.tresor -= moins;
@@ -87,6 +87,10 @@ public class Joueur {
     public void ajouterQuartierDansCite(Quartier quartier) {
         if(this.nbQuartier == this.cite.length) {
             System.out.println("trop de quartier");
+            return;
+        }
+        if(this.getNom() == "Navigatrice"){
+            System.out.println("Vous n'avez pas le droit de construire");
             return;
         }
         this.cite[this.nbQuartier] = quartier;
@@ -121,6 +125,7 @@ public class Joueur {
     public void ajouterQuartierDansMain(Quartier nomQuartier) {
         this.main.add(nomQuartier);
     }
+    
     public Quartier retirerQuartierDansMain() {
         if(this.nbQuartiersDansMain() == 0) {
             return null;
