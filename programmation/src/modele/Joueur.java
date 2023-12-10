@@ -11,6 +11,7 @@ public class Joueur {
     private int nbQuartier;
     private ArrayList<Quartier> main;
     private boolean possedeCouronne;
+    private boolean bot;
 
     public Personnage monPersonnage;
 
@@ -25,6 +26,13 @@ public class Joueur {
         this.cite = new Quartier[8];
         this.main = new ArrayList<Quartier>();
         this.monPersonnage = null;
+    }
+
+    public boolean isBot(){
+        return this.bot ? true : false;
+    }
+    public void setType(boolean type){
+        this.bot=type;
     }
 
     public String getNom() {
@@ -56,10 +64,6 @@ public class Joueur {
     public Personnage getPersonnage() {
         return this.monPersonnage;
     }
-
-
-
-
 
     public void ajouterPieces(int plus) {
         if(plus < 0) {
