@@ -13,8 +13,8 @@ import modele.Roi;
 public class TestEspion {
     public static void main(String[] args) {
         TestNavigatrice test = new TestNavigatrice();
-        // test.test1();
-        // test.test2();
+        test.test1();
+        test.test2();
     }
 
     public void test1() {
@@ -90,7 +90,6 @@ public class TestEspion {
         System.out.println("");
 
         // on recupere la taille de la pioche:
-        int taillePiocheAvantPouvoir = pioche.nombreElements();
         roi.ajouterPieces();
         espion.ajouterPieces();
         Test.test(espion.getJoueur().nbPieces() == 2, "test du nombre de pieces d'or avant pouvoir");

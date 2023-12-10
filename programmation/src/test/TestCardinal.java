@@ -1,6 +1,7 @@
 package test;
 
 import modele.Caracteristiques;
+import modele.Cardinal;
 import modele.Joueur;
 import modele.Magicienne;
 import modele.Pioche;
@@ -14,7 +15,6 @@ public class TestCardinal {
         // test.test1();
         // test.test2();
         // test.test3();
-        // test.test4();
     }
 
     public void test1() {
@@ -101,7 +101,6 @@ public class TestCardinal {
         plateau.ajouterJoueur(joueur3);
         Cardinal cardinal = new Cardinal();
         Quartier quartier1 = new Quartier("temple", Quartier.TYPE_QUARTIERS[0], 1);
-        Quartier quartier2 = new Quartier("prison", Quartier.TYPE_QUARTIERS[1], 2);
         Quartier quartier3 = new Quartier("église", Quartier.TYPE_QUARTIERS[0], 2);
         cardinal.setJoueur(joueur);
         Magicienne magicienne = new Magicienne();
