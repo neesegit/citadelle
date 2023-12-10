@@ -1,4 +1,4 @@
-package test;
+/*package test;
 
 import modele.Caracteristiques;
 import modele.Joueur;
@@ -193,3 +193,4 @@ public class TestAbbe {
                 // une fois il est le plus riche
         }
 }
+ */

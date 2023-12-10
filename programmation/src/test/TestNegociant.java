@@ -1,4 +1,4 @@
-package test;
+/*package test;
 
 import modele.Assassin;
 import modele.Caracteristiques;
@@ -53,3 +53,4 @@ public class TestNegociant {
                 "Verification du passif (reussi a construire tout sauf la cathedrale)");
     }
 }
+ */

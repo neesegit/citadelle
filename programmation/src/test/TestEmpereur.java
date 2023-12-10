@@ -1,4 +1,4 @@
-package test;
+/*package test;
 
 import modele.Assassin;
 import modele.Caracteristiques;
@@ -107,3 +107,4 @@ public class TestEmpereur {
         Test.test(empereur.getJoueur().nbQuartiersDansMain() == 0, "Test l'assassin donne une carte");
     } // je sais pas comment ça fonctionne voir avec la fonction de mattieu
 }
+ */

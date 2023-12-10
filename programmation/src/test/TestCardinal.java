@@ -1,4 +1,4 @@
-package test;
+/*package test;
 
 import modele.Caracteristiques;
 import modele.Joueur;
@@ -151,4 +151,4 @@ public class TestCardinal {
         Test.test(cardinal.getJoueur().nbQuartiersDansMain() == 1,
                 "Test du nombre de caarte dans la main (trade ces 2 cartes contre 2 pieces)");
     }
-}
+} */

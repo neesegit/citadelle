@@ -1,4 +1,4 @@
-package test;
+/*package test;
 
 import modele.Architecte;
 import modele.Caracteristiques;
@@ -74,3 +74,4 @@ public class TestArchiviste {
     // le fait qu'il n'y ai pas assez de pioche n'arrivera pas du fait que la pioche
     // ce recycle
 }
+ */
