@@ -44,6 +44,7 @@ public class Voyante extends Personnage {
                 }
             }
             */
+            //test
 
             // on redistribue une carte a chaque joueur que a participer
         }
