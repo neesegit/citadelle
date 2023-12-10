@@ -154,5 +154,13 @@ public class TestVoyante {
                 "On verifie que chacun a bin le même nombre carte à la fin");
         Test.test(voyante.getJoueur().nbQuartiersDansMain(),
                 "On verifie que chacun a bin le même nombre carte à la fin");
+        Quartier quartier1 = new Quartier("caserne", Quartier.TYPE_QUARTIERS[1], 3);
+        Quartier quartier2 = new Quartier("manoir", Quartier.TYPE_QUARTIERS[2], 3);
+        Quartier quartier3 = new Quartier("prison", Quartier.TYPE_QUARTIERS[1], 2);
+        voyante.getJoueur().ajouterPieces(8);
+        voyante.construire(quartier1);
+        voyante.construire(quartier2);
+        voyante.construire(quartier3);
+        Test.test(voyante.getJoueur().nbQuartiersDansCite() == 2, "Verifiez que deux construction par tour");
     }
 }
