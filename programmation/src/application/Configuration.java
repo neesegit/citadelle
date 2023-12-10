@@ -2,18 +2,7 @@ package application;
 
 import modele.Pioche;
 
-import modele.Architecte;
-import modele.Assassin;
-import modele.Condottiere;
-import modele.Eveque;
-import modele.Joueur;
-import modele.Magicienne;
-import modele.Marchande;
-import modele.Personnage;
-import modele.PlateauDeJeu;
-import modele.Quartier;
-import modele.Roi;
-import modele.Voleur;
+import modele.*;
 
 public class Configuration {
 	
