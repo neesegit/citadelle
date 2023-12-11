@@ -88,12 +88,12 @@ public class Diplomate extends Personnage{
         if(random.nextBoolean()){
             //echange un de ses quartiers batis avec le quartier adverse
             
-            int id = random.nextInt(getPlateau().getNombrePersonnages())+1;
+            int id = random.nextInt(1, getPlateau().getNombrePersonnages()+1);
             cible = getPlateau().getPersonnage(id - 1);
 
             while(cible.getNom() == "Diplomate"){
                 System.out.println("Vous ne pouvez pas choisir ce personnage");
-                id = random.nextInt(getPlateau().getNombrePersonnages())+1;
+                id = random.nextInt(1, getPlateau().getNombrePersonnages()+1);
                 cible = getPlateau().getPersonnage(id - 1);
             }
 
