@@ -85,7 +85,7 @@ public class Jeu {
 
     private void gestionCouronne(){
         for(int i=0;i<this.m_plateauDeJeu.getNombreJoueurs();i++){
-            if(this.m_plateauDeJeu.getJoueur(i).monPersonnage.getNom() == "Roi"){
+            if(this.m_plateauDeJeu.getJoueur(i).monPersonnage.getNom().equals("Roi")){
                 this.m_plateauDeJeu.getJoueur(i).setPossedeCouronne(true);
             }
         }
@@ -104,6 +104,14 @@ public class Jeu {
             for(int i=0;i<this.m_plateauDeJeu.getNombreJoueurs();i++){
                 if(this.m_plateauDeJeu.getJoueur(i).nbQuartiersDansCite()>=7){
                     System.out.println("\t\nLa partie est terminé : " + this.m_plateauDeJeu.getJoueur(i).getNom() + " possède une cité complète\n");
+                    // Calcul des points supplémentaires pour la Basilique à la fin de la partie
+                    for(int i = 0; i < this.m_plateauDeJeu.getNombreJoueurs(); i++){
+                        int pointsBasilique = calculerPointsBasilique(this.m_plateauDeJeu.getJoueur(i));
+                        // Ajouter ces points aux points totaux du joueur
+                        this.m_plateauDeJeu.getJoueur(i).ajouterPoints(pointsBasilique);
+                    }
+                    // Calcul des points totaux pour chaque joueur, en tenant compte des points de la Basilique
+                    calculDesPoints();
                     if(!retour){
                         this.m_premier=this.m_plateauDeJeu.getJoueur(i);
                         retour=true;
@@ -115,6 +123,14 @@ public class Jeu {
             for(int i=0;i<this.m_plateauDeJeu.getNombreJoueurs();i++){
                 if(this.m_plateauDeJeu.getJoueur(i).nbQuartiersDansCite()==8){
                     System.out.println("\t\nLa partie est terminé : " + this.m_plateauDeJeu.getJoueur(i).getNom() + " possède une cité complète\n");
+                    // Calcul des points supplémentaires pour la Basilique à la fin de la partie
+                    for(int i = 0; i < this.m_plateauDeJeu.getNombreJoueurs(); i++){
+                        int pointsBasilique = calculerPointsBasilique(this.m_plateauDeJeu.getJoueur(i));
+                        // Ajouter ces points aux points totaux du joueur
+                        this.m_plateauDeJeu.getJoueur(i).ajouterPoints(pointsBasilique);
+                    }
+                    // Calcul des points totaux pour chaque joueur, en tenant compte des points de la Basilique
+                    calculDesPoints();
                     if(!retour){
                         this.m_premier=this.m_plateauDeJeu.getJoueur(i);
                         retour=true;
@@ -132,7 +148,7 @@ public class Jeu {
             if(!this.m_plateauDeJeu.getPersonnage(i).getAssassine()){//Si le personnage n'est pas assassiné
                 if(this.m_plateauDeJeu.getPersonnage(i).getVole()){//Si le personnage est volé
                     for(int j=0;j<this.m_plateauDeJeu.getNombrePersonnages();j++){
-                        if(this.m_plateauDeJeu.getPersonnage(j).getNom()=="Voleur"){
+                        if(this.m_plateauDeJeu.getPersonnage(j).getNom().equals("Voleur")){
                             int pieces=this.m_plateauDeJeu.getPersonnage(i).getJoueur().nbPieces();
                             this.m_plateauDeJeu.getPersonnage(i).getJoueur().retirerPieces(pieces);
                             this.m_plateauDeJeu.getPersonnage(j).getJoueur().ajouterPieces(pieces);
@@ -363,26 +379,48 @@ public class Jeu {
     }
 
     private void calculDesPoints(){
-        for(int i=0;i<this.m_plateauDeJeu.getNombreJoueurs();i++){
-            Quartier[] quartiers=this.m_plateauDeJeu.getJoueur(i).getCite();
-            int cout=0;
-            Set<String> typesDifferents=new HashSet<>();
-            for(int j=0;j<quartiers.length;j++){
-                if(quartiers[j]!=null){
-                    cout+=quartiers[j].getCout();
+        for(int i = 0; i < this.m_plateauDeJeu.getNombreJoueurs(); i++){
+            Quartier[] quartiers = this.m_plateauDeJeu.getJoueur(i).getCite();
+            int cout = 0;
+            Set<String> typesDifferents = new HashSet<>(); // Ensemble pour stocker les types différents
+
+            for(int j = 0; j < quartiers.length; j++){
+                if(quartiers[j] != null){
+                    cout += quartiers[j].getCout();
+                    typesDifferents.add(quartiers[j].getType()); // Ajout du type du quartier à l'ensemble
                 }
             }
-            int points=cout;
-            if(typesDifferents.size()>=5){points+=3;}
-            if(quartiers.length==8){
-                if(this.m_premier==this.m_plateauDeJeu.getJoueur(i)){
-                    points+=4;
-                }
-                else{
-                    points+=2;
+
+            int points = cout;
+            if(typesDifferents.size() >= 5){
+                points += 3;
+            }
+
+            if(quartiers.length == 8){
+                if(this.m_premier == this.m_plateauDeJeu.getJoueur(i)){
+                    points += 4;
+                } else {
+                    points += 2;
                 }
             }
-            //Bonus pour les différentes Merveilles
+
+            // Bonus pour les différentes Merveilles
+            int pointsBasilique = calculerPointsBasilique(this.m_plateauDeJeu.getJoueur(i));
+            // Ajouter ces points aux points totaux du joueur
+            this.m_plateauDeJeu.getJoueur(i).ajouterPoints(points + pointsBasilique);
         }
+    }
+
+
+    public int calculerPointsBasilique(Joueur joueur) {
+        int pointsSupplementaires = 0;
+
+        for (Quartier quartier : joueur.getCite()) {
+            if (quartier.getCout() % 2 != 0) {
+                pointsSupplementaires++;
+            }
+        }
+
+        return pointsSupplementaires;
     }
 }

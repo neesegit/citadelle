@@ -3,8 +3,6 @@ package application;
 import controleur.Interaction;
 import modele.*;
 
-import modele.*;
-
 public class Configuration {
 	
     private static Personnage assassin = new Assassin();
