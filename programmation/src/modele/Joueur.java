@@ -13,6 +13,7 @@ public class Joueur {
     private boolean possedeCouronne;
     private boolean bot;
     private static Random generateur = new Random();
+    private boolean possedeCatacombes;
 
     public Personnage monPersonnage;
 
@@ -26,6 +27,7 @@ public class Joueur {
         this.cite = new Quartier[8];
         this.main = new ArrayList<Quartier>();
         this.monPersonnage = null;
+        this.possedeCatacombes = false;
     }
 
     public boolean isBot(){
@@ -154,7 +156,30 @@ public class Joueur {
         return false;
     }
 
+    public boolean possedeCatacombes() {
+        return this.possedeCatacombes;
+    }
 
+    public void obtenirCatacombes() {
+        this.possedeCatacombes = true;
+    }
+
+    /* Je comprends pas vraiment ce qu'il faut faire la
+    public void marquerPointsCatacombes() {
+        if (this.possedeCatacombes) {
+        }
+    }
+
+    public void retirerCatacombesDeLaMain() {
+
+    }
+
+    public void ajouterCatacombesALaMain() {
+
+    }
+    */
+
+     */
     public void reinitialiser() {
         this.tresor = 0;
         this.nbQuartier = 0;
