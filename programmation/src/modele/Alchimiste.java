@@ -7,7 +7,7 @@ public class Alchimiste extends Personnage {
     }
 
     @Override
-    public void construire(Quartier nouveau){
+    public void construire(Quartier nouveau) {
         if (this.getDejaConstruit()) {
             if (this.getJoueur() == null || this.getAssassine() == true) {
                 return;
@@ -23,9 +23,11 @@ public class Alchimiste extends Personnage {
     }
 
     @Override
-    public void utiliserPouvoir() {}
+    public void utiliserPouvoir() {
+    }
 
     @Override
-    public void utiliserPouvoirAvatar() {}
-    
+    public void utiliserPouvoirAvatar() {
+    }
+
 }
