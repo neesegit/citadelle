@@ -34,6 +34,7 @@ public class Diplomate extends Personnage{
         }
     }
 
+    
     @Override
     public void utiliserPouvoir() {
 
