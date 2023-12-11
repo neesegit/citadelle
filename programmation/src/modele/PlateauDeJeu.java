@@ -18,6 +18,15 @@ public class PlateauDeJeu {
 
     }
 
+    public Quartier[] getQuartiersDuJoueur(Joueur joueur) {
+        for (Joueur j : listeJoueurs) {
+            if (j.equals(joueur)) {
+                return j.getCite();
+            }
+        }
+        return null;
+    }
+
     public int getNombrePersonnages() {
         return this.nombrePersonnages;
     }
@@ -67,7 +76,7 @@ public class PlateauDeJeu {
     }
 
     public void ajouterJoueur(Joueur j) {
-        if (j == null || nombreJoueurs == this.listePersonnage.length) {
+        if (j == null || nombreJoueurs == this.listeJoueurs.length) {
             return;
         }
 

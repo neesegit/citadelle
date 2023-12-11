@@ -12,11 +12,11 @@ public class Joueur {
     private ArrayList<Quartier> main;
     private boolean possedeCouronne;
     private boolean bot;
+    private static Random generateur = new Random();
 
     public Personnage monPersonnage;
 
     private int truc = 0;
-    Random generateur = new Random();
 
     public Joueur(String nom) {
         this.nom = nom;
@@ -65,6 +65,10 @@ public class Joueur {
         return this.monPersonnage;
     }
 
+    public static Random getGenerateur() {
+        return generateur;
+    }
+
     public void ajouterPieces(int plus) {
         if(plus < 0) {
             System.out.println("Le nombre choisis doit être positif");
@@ -89,7 +93,7 @@ public class Joueur {
             System.out.println("trop de quartier");
             return;
         }
-        if(this.getNom() == "Navigatrice"){
+        if(this.getNom().equals("Navigatrice")){
             System.out.println("Vous n'avez pas le droit de construire");
             return;
         }
@@ -135,6 +139,21 @@ public class Joueur {
         this.main.remove(numeroHasard);
         return temp;
     }
+
+    public boolean aTroisQuartiersDuMemeType(PlateauDeJeu plateau) {
+        Quartier[] quartiersDuJoueur = plateau.getQuartiersDuJoueur(this);
+        Map<String, Integer> compteurQuartiers = new HashMap<>();
+        for (Quartier quartier : plateau.getQuartiersDuJoueur(this)) {
+            if (quartier != null) {
+                compteurQuartiers.put(quartier.getType(), compteurQuartiers.getOrDefault(quartier.getType(), 0) + 1);
+                if (compteurQuartiers.get(quartier.getType()) >= 3) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
 
     public void reinitialiser() {
         this.tresor = 0;

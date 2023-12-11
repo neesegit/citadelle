@@ -104,13 +104,10 @@ public class Jeu {
             for(int i=0;i<this.m_plateauDeJeu.getNombreJoueurs();i++){
                 if(this.m_plateauDeJeu.getJoueur(i).nbQuartiersDansCite()>=7){
                     System.out.println("\t\nLa partie est terminé : " + this.m_plateauDeJeu.getJoueur(i).getNom() + " possède une cité complète\n");
-                    // Calcul des points supplémentaires pour la Basilique à la fin de la partie
                     for(int i = 0; i < this.m_plateauDeJeu.getNombreJoueurs(); i++){
                         int pointsBasilique = calculerPointsBasilique(this.m_plateauDeJeu.getJoueur(i));
-                        // Ajouter ces points aux points totaux du joueur
                         this.m_plateauDeJeu.getJoueur(i).ajouterPoints(pointsBasilique);
                     }
-                    // Calcul des points totaux pour chaque joueur, en tenant compte des points de la Basilique
                     calculDesPoints();
                     if(!retour){
                         this.m_premier=this.m_plateauDeJeu.getJoueur(i);
@@ -123,13 +120,10 @@ public class Jeu {
             for(int i=0;i<this.m_plateauDeJeu.getNombreJoueurs();i++){
                 if(this.m_plateauDeJeu.getJoueur(i).nbQuartiersDansCite()==8){
                     System.out.println("\t\nLa partie est terminé : " + this.m_plateauDeJeu.getJoueur(i).getNom() + " possède une cité complète\n");
-                    // Calcul des points supplémentaires pour la Basilique à la fin de la partie
                     for(int i = 0; i < this.m_plateauDeJeu.getNombreJoueurs(); i++){
                         int pointsBasilique = calculerPointsBasilique(this.m_plateauDeJeu.getJoueur(i));
-                        // Ajouter ces points aux points totaux du joueur
                         this.m_plateauDeJeu.getJoueur(i).ajouterPoints(pointsBasilique);
                     }
-                    // Calcul des points totaux pour chaque joueur, en tenant compte des points de la Basilique
                     calculDesPoints();
                     if(!retour){
                         this.m_premier=this.m_plateauDeJeu.getJoueur(i);
@@ -279,6 +273,10 @@ public class Jeu {
                     //Affichage des cartes disponibles.
                     for (int i = 0; i < 27; i++) {
                         boolean indiceExclu = false;
+                        if (this.m_plateauDeJeu.getPersonnage(i).getNom().equalsIgnoreCase("Navigatrice")) {
+                            System.out.println("Vous n'avez pas le droit de construire");
+                            return;
+                        }
                         for (int element : cartes) {
                             if (element == i) {
                                 indiceExclu = true;
@@ -408,8 +406,14 @@ public class Jeu {
 
             // Bonus pour les différentes Merveilles
             int pointsBasilique = calculerPointsBasilique(this.m_plateauDeJeu.getJoueur(i));
-            // Ajouter ces points aux points totaux du joueur
             this.m_plateauDeJeu.getJoueur(i).ajouterPoints(points + pointsBasilique);
+
+            if (this.m_plateauDeJeu.getJoueur(i).monPersonnage.getNom().equals("Capitole")) {
+                if (this.m_plateauDeJeu.getJoueur(i).aTroisQuartiersDuMemeType(this.m_plateauDeJeu) && !this.m_plateauDeJeu.getJoueur(i).aUtiliseEffetCapitole()) {
+                    this.m_plateauDeJeu.getJoueur(i).ajouterPoints(3);
+                    this.m_plateauDeJeu.getJoueur(i).setEffetCapitoleUtilise(true);
+                }
+            }
         }
     }
 
@@ -429,14 +433,11 @@ public class Jeu {
     private void effetBibliotheque(Joueur joueur) {
         if (joueur.monPersonnage.getNom().equals("Bibliothèque")) {
             System.out.println("Effet de la Bibliothèque : vous pouvez piocher des cartes quartier au début de votre tour.");
-
-            // Vérification si le joueur veut piocher des cartes quartier
             System.out.println("Voulez-vous piocher des cartes quartier ? (oui/non)");
             boolean choixPioche = Interaction.lireOuiOuNon();
 
             if (choixPioche) {
-                // Piocher des cartes quartier et les conserver toutes
-                int nombreCartesAPiocher = 2; // Choisir le nombre de cartes à piocher selon vos règles
+                int nombreCartesAPiocher = 2;
                 for (int i = 0; i < nombreCartesAPiocher; i++) {
                     Quartier quartierPioche = m_plateauDeJeu.getPioche().piocher();
                     joueur.ajouterQuartierDansMain(quartierPioche);
