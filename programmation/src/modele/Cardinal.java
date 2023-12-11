@@ -5,8 +5,6 @@ import java.util.Random;
 import controleur.Interaction;
 
 public class Cardinal extends Personnage{
-
-    private int compteurQuartierReligieux = 0;
     private String[] religieux = {"temple", "église", "monastère", "cathédrale"};
     
     private Joueur monJoueur = this.getJoueur();
@@ -38,10 +36,10 @@ public class Cardinal extends Personnage{
         // ~ Ajout de 1 pièce par quartier religieux présent dans la cité
         //Ajout de 1 quartier
         for(int i = 0; i < religieux.length; i++){
-            if(monJoueur.quartierPresentDansCite(religieux[i])) compteurQuartierReligieux++;
+            if(monJoueur.quartierPresentDansCite(religieux[i])) this.getJoueur().ajouterQuartierDansMain(pioche.piocher());;
         }
         //monJoueur.ajouterPieces(compteurQuartierReligieux);
-        this.getJoueur().ajouterQuartierDansMain(pioche.piocher());
+        
     }
 
     @Override
