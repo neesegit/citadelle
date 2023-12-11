@@ -95,6 +95,7 @@ public abstract class Personnage {
                 return;
             }
             this.getJoueur().ajouterQuartierDansCite(nouveau);
+            this.getJoueur().retirerPieces(nouveau.coutConstruction);
             DejaConstruitUnTruc = false;
         }
         System.out.println("Vous construit un quartier dans ce tour");
