@@ -12,8 +12,8 @@ import modele.Roi;
 
 public class TestEspion {
     public static void main(String[] args) {
-        TestNavigatrice test = new TestNavigatrice();
-        test.test1();
+        TestEspion test = new TestEspion();
+        // test.test1();
         test.test2();
     }
 
@@ -33,7 +33,12 @@ public class TestEspion {
         System.out.println("TEST DU POUVOIR ESPION");
         PlateauDeJeu plateau = new PlateauDeJeu();
         Roi roi = new Roi();
+        ;
         Espion espion = new Espion();
+        espion.setPlateau(plateau);
+        roi.setPlateau(plateau);
+        System.out.println(espion.getPlateau());
+        System.out.println(roi.getPlateau());
         Joueur joueur1 = new Joueur("Billy");
         plateau.ajouterJoueur(joueur1);
         Joueur joueur2 = new Joueur("Martin");
