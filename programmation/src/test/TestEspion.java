@@ -33,7 +33,6 @@ public class TestEspion {
         System.out.println("TEST DU POUVOIR ESPION");
         PlateauDeJeu plateau = new PlateauDeJeu();
         Roi roi = new Roi();
-        ;
         Espion espion = new Espion();
         espion.setPlateau(plateau);
         roi.setPlateau(plateau);
