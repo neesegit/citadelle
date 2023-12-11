@@ -53,6 +53,7 @@ public class Archiviste extends Personnage {
                     continue;
                 }
                 this.getJoueur().ajouterQuartierDansCite(nouveau);
+                this.getJoueur().retirerPieces(nouveau.coutConstruction);
                 permisDeConstruire--;
                 if(permisDeConstruire > 0) choixON = random.nextBoolean();
                 if(choixON){
@@ -71,6 +72,7 @@ public class Archiviste extends Personnage {
                     continue;
                 }
                 this.getJoueur().ajouterQuartierDansCite(nouveau);
+                this.getJoueur().retirerPieces(nouveau.coutConstruction);
                 permisDeConstruire--;
                 if(permisDeConstruire > 0){
                     System.out.println("Voulez vous construire à nouveau (reste "+permisDeConstruire+" nombre de construction) ? ");
