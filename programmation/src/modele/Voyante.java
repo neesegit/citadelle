@@ -26,9 +26,10 @@ public class Voyante extends Personnage {
                 }
             }
             int NbCarteDonné = CopieCartesSelectionne.size();
-            for (int i; i < NbCarteDonné; i++) {
+            for (int i = 0; i < NbCarteDonné; i++) {
                 getJoueur().ajouterQuartierDansMain(CopieCartesSelectionne.get(i));
             }
+            /* 
             for (int i; i < NbCarteDonné; i++) {
                 while (!choix) {
                     System.out.println(
@@ -42,6 +43,7 @@ public class Voyante extends Personnage {
                     }
                 }
             }
+            */
 
             // on redistribue une carte a chaque joueur que a participer
         }
