@@ -2,29 +2,39 @@ package modele;
 
 import controleur.Interaction;
 
-public class Navigatrice extends Personnage{
+public class Navigatrice extends Personnage {
 
-    private PlateauDeJeu plateau = getPlateau();
-    private Pioche pioche = plateau.getPioche();
+    private PlateauDeJeu plateau;
+    private Pioche pioche;
 
-	public Navigatrice() {
-		super("Navigatrice", 7, Caracteristiques.NAVIGATRICE);
-	}
-	
-	@Override
-	public void utiliserPouvoir() {
-        while(true){
+    public Navigatrice() {
+        super("Navigatrice", 7, Caracteristiques.NAVIGATRICE);
+        this.plateau = getPlateau();
+        if (this.plateau == null) {
+            plateau = new PlateauDeJeu();
+        }
+        this.pioche = this.plateau.getPioche();
+    }
+
+    @Override
+    public void utiliserPouvoir() {
+        while (true) {
             System.out.print("Prendre (p)ieces ou piochez (c)artes : ");
             String choix = Interaction.lireUneChaine();
-            if(choix == "p"){
+            if (choix.equals("p")) {
                 this.getJoueur().ajouterPieces(4);
                 return;
-            } else if(choix == "c"){
-                for(int i = 0; i < 4; i++){
-                    this.getJoueur().ajouterQuartierDansMain(pioche.piocher()); //this.getJoueur() ... ?
+            } else if (choix.equals("c")) {
+                for (int i = 0; i < 4; i++) {
+                    this.getJoueur().ajouterQuartierDansMain(pioche.piocher()); // this.getJoueur() ... ?
                 }
                 return;
             }
         }
-	}
+    }
+
+    @Override
+    public void construire(Quartier nouveau) {
+        System.out.println("En tant que navigatrice, vous appartenez aux mers, donc construire ne servirait à rien");
+    }
 }
