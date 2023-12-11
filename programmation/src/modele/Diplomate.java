@@ -37,6 +37,8 @@ public class Diplomate extends Personnage{
     @Override
     public void utiliserPouvoir() {
 
+        if(this.getJoueur().nbQuartiersDansCite() == 0) return;
+
         System.out.println("Voulez-vous echanger un de vos quartiers batis avec le quartier d'un autre joueur ? ");
         choixON = Interaction.lireOuiOuNon();
 
