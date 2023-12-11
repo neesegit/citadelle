@@ -23,6 +23,14 @@ public abstract class Personnage {
         // pouvoir.
     }
 
+    public boolean getDejaConstruit() {
+        return this.DejaConstruitUnTruc;
+    }
+
+    public void setDejaConstruit(boolean construit){
+        this.DejaConstruitUnTruc = construit;
+    }
+
     public String getNom() {
         return this.nom;
     }
