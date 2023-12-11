@@ -1,5 +1,7 @@
 package modele;
 
+import java.util.Random;
+
 import controleur.Interaction;
 
 public class Cardinal extends Personnage{
@@ -13,10 +15,15 @@ public class Cardinal extends Personnage{
     private int choixNbPiece = 0;
     private boolean echange = false;
 
+    private boolean bot = false;
+    private boolean choixBot = true;
+
     private Pioche pioche;
     private PlateauDeJeu plateau;
 
     private Personnage cible;
+
+    private Random random = new Random();
 
     public Cardinal(){
         super("Cardinal", 5, Caracteristiques.CARDINAL);
@@ -43,31 +50,42 @@ public class Cardinal extends Personnage{
         if(this.getDejaConstruit()){
             if(this.getJoueur() == null || this.getAssassine() == true) return;
             if(this.getJoueur().nbPieces() < nouveau.coutConstruction){
-                System.out.print("Voulez vous prendre une ou plusieurs pièces à un autre joueur en échange de cartes ? ");
-                choixON = Interaction.lireOuiOuNon();
-                if(choixON){
-                    System.out.println("A quel personnage voulez-vous prendre des pièces ?");
-                    for (int i = 0; i < getPlateau().getNombrePersonnages(); i++) {
-                        System.out.println(i + 1 + " " + getPlateau().getPersonnage(i).getNom() + " " + getJoueur().nbPieces());
+                if(bot){
+                    while(choixBot){
+                        int id = random.nextInt(this.plateau.getNombrePersonnages())+1;
+                        cible = this.plateau.getPersonnage(id-1);
+                        if(cible.getNom() != "Cardinal") choixBot = false;
                     }
-                    while (!echange) {
-                        System.out.println("Votre choix : ");
-                        int id = Interaction.lireUnEntier(1, getPlateau().getNombrePersonnages() + 1);
-                        cible = getPlateau().getPersonnage(id - 1);
-                        if (cible.getNom() == "Cardinal") {// je sais pas s'il y a des limite de rang a son pouvoir
-                            System.out.println("Vous ne pouvez pas choisir ce personnage");
-                        } else {
-                            echange = true;
-                        }
-                    }
-                    System.out.print("Combien de pieces voulez vous de "+cible.getNom()+" ? (" + cible.getJoueur().nbPieces()+" pieces) ");
-                    choixNbPiece = Interaction.lireUnEntier(0, cible.getJoueur().nbPieces());
+                    choixNbPiece = random.nextInt(cible.getJoueur().nbPieces());
                     for(int i = 0; i < choixNbPiece; i++) cible.getJoueur().ajouterQuartierDansMain(this.getJoueur().retirerQuartierDansMain());
                     this.getJoueur().ajouterPieces(choixNbPiece);
-
                 } else {
-                    System.out.println("Vous n'avez pas d'or pour construire ce quartier");
-                    return;
+                    System.out.print("Voulez vous prendre une ou plusieurs pièces à un autre joueur en échange de cartes ? ");
+                    choixON = Interaction.lireOuiOuNon();
+                    if(choixON){
+                        System.out.println("A quel personnage voulez-vous prendre des pièces ?");
+                        for (int i = 0; i < getPlateau().getNombrePersonnages(); i++) {
+                            System.out.println(i + 1 + " " + getPlateau().getPersonnage(i).getNom() + " " + getJoueur().nbPieces());
+                        }
+                        while (!echange) {
+                            System.out.println("Votre choix : ");
+                            int id = Interaction.lireUnEntier(1, getPlateau().getNombrePersonnages() + 1);
+                            cible = getPlateau().getPersonnage(id - 1);
+                            if (cible.getNom() == "Cardinal") {// je sais pas s'il y a des limite de rang a son pouvoir
+                                System.out.println("Vous ne pouvez pas choisir ce personnage");
+                            } else {
+                                echange = true;
+                            }
+                        }
+                        System.out.print("Combien de pieces voulez vous de "+cible.getNom()+" ? (" + cible.getJoueur().nbPieces()+" pieces) ");
+                        choixNbPiece = Interaction.lireUnEntier(0, cible.getJoueur().nbPieces());
+                        for(int i = 0; i < choixNbPiece; i++) cible.getJoueur().ajouterQuartierDansMain(this.getJoueur().retirerQuartierDansMain());
+                        this.getJoueur().ajouterPieces(choixNbPiece);
+
+                    } else {
+                        System.out.println("Vous n'avez pas d'or pour construire ce quartier");
+                        return;
+                    }
                 }
             }
             this.getJoueur().ajouterQuartierDansCite(nouveau);
@@ -82,5 +100,5 @@ public class Cardinal extends Personnage{
     public void utiliserPouvoir(){}
 
     @Override
-    public void utiliserPouvoirAvatar() {}
+    public void utiliserPouvoirAvatar(){bot = true;}
 }
