@@ -142,4 +142,7 @@ public class Joueur {
         this.nbQuartier = 0;
         this.main.clear();
     }
+
+    public void ajouterPieces() {
+    }
 }

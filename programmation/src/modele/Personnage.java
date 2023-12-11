@@ -27,7 +27,7 @@ public abstract class Personnage {
         return this.DejaConstruitUnTruc;
     }
 
-    public void setDejaConstruit(boolean construit){
+    public void setDejaConstruit(boolean construit) {
         this.DejaConstruitUnTruc = construit;
     }
 
@@ -125,6 +125,14 @@ public abstract class Personnage {
         this.vole = false;
         this.assassine = false;
         this.joueur = null;
+    }
+
+    public Quartier retirerQuartierDansCite(String nom2) {
+        return null;
+    }
+
+    public Quartier[] getCite() {
+        return null;
     }
 
 }
