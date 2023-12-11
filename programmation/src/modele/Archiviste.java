@@ -1,6 +1,6 @@
 package modele;
 
-import java.util.ArrayList;
+import java.util.Random;
 
 import controleur.Interaction;
 
@@ -12,6 +12,8 @@ public class Archiviste extends Personnage {
 
     private int permisDeConstruire = 2;
     private boolean choixON = false;
+
+    Random random = new Random();
 
     private int choixCarte = 0;
 
@@ -40,31 +42,50 @@ public class Archiviste extends Personnage {
 
     @Override
     public void construire(Quartier nouveau){
-        while(permisDeConstruire > 0){
-            if (this.getJoueur() == null || this.getAssassine() == true) {
-                return;
-            }
-            if (this.getJoueur().nbPieces() < nouveau.coutConstruction) {
-                System.out.println("Vous n'avez pas  d'or pour construire ce quartier");
+        if(this.getJoueur().isBot()){
+            while(permisDeConstruire > 0){
+                if (this.getJoueur() == null || this.getAssassine() == true) {
+                    return;
+                }
+                if (this.getJoueur().nbPieces() < nouveau.coutConstruction) {
+                    System.out.println("Vous n'avez pas  d'or pour construire ce quartier");
+                    permisDeConstruire--;
+                    continue;
+                }
+                this.getJoueur().ajouterQuartierDansCite(nouveau);
                 permisDeConstruire--;
-                continue;
-            }
-            this.getJoueur().ajouterQuartierDansCite(nouveau);
-            permisDeConstruire--;
-            if(permisDeConstruire > 0){
-                System.out.println("Voulez vous construire à nouveau (reste "+permisDeConstruire+" nombre de construction) ? ");
-                System.out.print("Veuillez répondre par oui ou par non : ");
-                choixON = Interaction.lireOuiOuNon();
-            }
-            if(choixON){
-                System.out.println("Veuillez choisir un quartier parmis votre main :");
-                System.out.println(this.getJoueur().getMain().toString());
-                nouveau = this.getJoueur().retirerQuartierDansMain();
+                if(permisDeConstruire > 0) choixON = random.nextBoolean();
+                if(choixON){
+                    nouveau = this.getJoueur().retirerQuartierDansMain();
+                    choixON = false;
+                }
+            }    
+        } else {
+            while(permisDeConstruire > 0){
+                if (this.getJoueur() == null || this.getAssassine() == true) {
+                    return;
+                }
+                if (this.getJoueur().nbPieces() < nouveau.coutConstruction) {
+                    System.out.println("Vous n'avez pas  d'or pour construire ce quartier");
+                    permisDeConstruire--;
+                    continue;
+                }
+                this.getJoueur().ajouterQuartierDansCite(nouveau);
+                permisDeConstruire--;
+                if(permisDeConstruire > 0){
+                    System.out.println("Voulez vous construire à nouveau (reste "+permisDeConstruire+" nombre de construction) ? ");
+                    System.out.print("Veuillez répondre par oui ou par non : ");
+                    choixON = Interaction.lireOuiOuNon();
+                }
+                if(choixON){
+                    nouveau = this.getJoueur().retirerQuartierDansMain();
+                    choixON = false;
+                }
             }
         }
     }
 
-    //TODO faire la partie du bot
+    
 
     @Override
     public void utiliserPouvoir() {}

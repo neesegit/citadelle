@@ -15,7 +15,6 @@ public class Cardinal extends Personnage{
     private int choixNbPiece = 0;
     private boolean echange = false;
 
-    private boolean bot = false;
     private boolean choixBot = true;
 
     private Pioche pioche;
@@ -50,7 +49,7 @@ public class Cardinal extends Personnage{
         if(this.getDejaConstruit()){
             if(this.getJoueur() == null || this.getAssassine() == true) return;
             if(this.getJoueur().nbPieces() < nouveau.coutConstruction){
-                if(bot){
+                if(this.getJoueur().isBot()){
                     while(choixBot){
                         int id = random.nextInt(this.plateau.getNombrePersonnages())+1;
                         cible = this.plateau.getPersonnage(id-1);
@@ -100,5 +99,5 @@ public class Cardinal extends Personnage{
     public void utiliserPouvoir(){}
 
     @Override
-    public void utiliserPouvoirAvatar(){bot = true;}
+    public void utiliserPouvoirAvatar(){}
 }
