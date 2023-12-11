@@ -144,6 +144,8 @@ public class Jeu {
     private void tourDeJeu(){
         this.choixPersonnages();
         for(int i=0;i<this.m_plateauDeJeu.getNombrePersonnages();i++){
+            Joueur joueurEnCours = this.m_plateauDeJeu.getPersonnage(i).getJoueur();
+            effetBibliotheque(joueurEnCours);
             System.out.println("\nTour de " + this.m_plateauDeJeu.getPersonnage(i).getNom() +".");
             if(!this.m_plateauDeJeu.getPersonnage(i).getAssassine()){//Si le personnage n'est pas assassiné
                 if(this.m_plateauDeJeu.getPersonnage(i).getVole()){//Si le personnage est volé
@@ -423,4 +425,26 @@ public class Jeu {
 
         return pointsSupplementaires;
     }
+
+    private void effetBibliotheque(Joueur joueur) {
+        if (joueur.monPersonnage.getNom().equals("Bibliothèque")) {
+            System.out.println("Effet de la Bibliothèque : vous pouvez piocher des cartes quartier au début de votre tour.");
+
+            // Vérification si le joueur veut piocher des cartes quartier
+            System.out.println("Voulez-vous piocher des cartes quartier ? (oui/non)");
+            boolean choixPioche = Interaction.lireOuiOuNon();
+
+            if (choixPioche) {
+                // Piocher des cartes quartier et les conserver toutes
+                int nombreCartesAPiocher = 2; // Choisir le nombre de cartes à piocher selon vos règles
+                for (int i = 0; i < nombreCartesAPiocher; i++) {
+                    Quartier quartierPioche = m_plateauDeJeu.getPioche().piocher();
+                    joueur.ajouterQuartierDansMain(quartierPioche);
+                    System.out.println("Vous avez pioché : " + quartierPioche.getNom());
+                }
+                System.out.println("Vous avez conservé toutes les cartes piochées.");
+            }
+        }
+    }
+
 }
