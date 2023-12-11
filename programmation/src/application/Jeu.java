@@ -414,6 +414,10 @@ public class Jeu {
                     this.m_plateauDeJeu.getJoueur(i).setEffetCapitoleUtilise(true);
                 }
             }
+
+            if (this.m_plateauDeJeu.getJoueur(i).possedeDracoport()) {
+                this.m_plateauDeJeu.getJoueur(i).ajouterPoints(2);
+            }
         }
     }
 
