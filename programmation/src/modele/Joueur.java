@@ -179,6 +179,12 @@ public class Joueur {
     }
     */
 
+    /* il manque peut être des trucs pour le donjons*/ 
+    public boolean peutAffecterDonjon(Personnage personnage) {
+        return personnage.getRang() < Quartier.RANG_POUVOIR_MAX;
+    }
+
+
      */
     public void reinitialiser() {
         this.tresor = 0;

@@ -18,6 +18,8 @@ public class Quartier {
         return this.type;
     }
 
+    public static final int RANG_POUVOIR_MAX = 8;
+
     public void setType(String type){
         // Utilisation de equals pour comparer les chaînes de caractères
         if (type.equals(this.TYPE_QUARTIERS[0]) || type.equals(this.TYPE_QUARTIERS[1]) ||
