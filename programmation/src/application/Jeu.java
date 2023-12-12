@@ -67,8 +67,11 @@ public class Jeu {
         initialisation();
         do {
             tourDeJeu();
+            System.out.println("apres cul");
             gestionCouronne();
+            System.out.println("apres cul");
             reinitialisationPersonnages();
+            System.out.println("apres cul");
         } while (partieFinie());
         calculDesPoints();
     }
@@ -415,6 +418,7 @@ public class Jeu {
     private void choixPersonnages(){
         int cartes[]=new int[4];
         boolean same=false;
+        System.out.println("cul");
         Personnage personnages[]=new Personnage[this.m_plateauDeJeu.getNombrePersonnages()];
         for(int i=0;i<this.m_plateauDeJeu.getNombrePersonnages();i++){
             personnages[i]=this.m_plateauDeJeu.getPersonnage(i);
