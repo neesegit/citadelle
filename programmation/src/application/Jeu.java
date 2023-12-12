@@ -646,6 +646,7 @@ public class Jeu {
     private void calculDesPoints(){
         for(int i = 0; i < this.m_plateauDeJeu.getNombreJoueurs(); i++){
             Quartier[] quartiers = this.m_plateauDeJeu.getJoueur(i).getCite();
+            Joueur joueur=this.m_plateauDeJeu.getJoueur(i);
             int cout = 0;
             Set<String> typesDifferents = new HashSet<>(); // Ensemble pour stocker les types différents
 
@@ -686,27 +687,27 @@ public class Jeu {
 
             for(int j=0;j<joueur.nbQuartiersDansCite();j++){
                 //Salle des cartes
-                if(cite[j].getNom()=="Salle des Cartes"){
+                if(quartiers[j].getNom()=="Salle des Cartes"){
                     points+=joueur.nbQuartiersDansMain();
                 }
                 //Statue équestre
-                if(cite[j].getNom()=="Statue Équestre"){
+                if(quartiers[j].getNom()=="Statue Équestre"){
                     if(joueur.getPossedeCouronne()){
                         points+=5;
                     }
                 }
                 //Trésor impérial
-                if(cite[j].getNom()=="Trésor Impérial"){
+                if(quartiers[j].getNom()=="Trésor Impérial"){
                     points+=joueur.nbPieces();
                 }
                 //Tour d'ivoire
-                if(cite[j].getNom()=="Tour d’Ivoire"){
+                if(quartiers[j].getNom()=="Tour d’Ivoire"){
                     int nbMerveille=0;
                     boolean gotCourDesMiracles=false;
                     for(int b=0;b<joueur.nbQuartiersDansCite();b++){
-                        if(cite[b].getType()=="MERVEILLE"){
+                        if(quartiers[b].getType()=="MERVEILLE"){
                             nbMerveille++;
-                            if(cite[b].getNom()=="Cour des Miracles"){
+                            if(quartiers[b].getNom()=="Cour des Miracles"){
                                 gotCourDesMiracles=true;
                             }
                         }
