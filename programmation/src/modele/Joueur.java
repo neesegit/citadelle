@@ -1,6 +1,8 @@
 package modele;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 public class Joueur {
@@ -12,10 +14,14 @@ public class Joueur {
     private ArrayList<Quartier> main;
     private boolean possedeCouronne;
 
+    private boolean bot;
+    private static Random generateur = new Random();
+    private boolean possedeCatacombes;
+
+
     public Personnage monPersonnage;
 
     private int truc = 0;
-    Random generateur = new Random();
 
     public Joueur(String nom) {
         this.nom = nom;
@@ -25,6 +31,7 @@ public class Joueur {
         this.cite = new Quartier[7];
         this.main = new ArrayList<Quartier>();
         this.monPersonnage = null;
+        this.possedeCatacombes = false;
     }
 
     public String getNom() {
@@ -40,10 +47,12 @@ public class Joueur {
     }
 
     public Quartier[] getCite() {
-        return this.cite;
+        return cite;
     }
 
-    public ArrayList<Quartier> getMain() {
+
+    public ArrayList<Quartier> getMain(){
+
         return this.main;
     }
 
@@ -61,6 +70,10 @@ public class Joueur {
 
     public Personnage getPersonnage() {
         return this.monPersonnage;
+    }
+
+    public static Random getGenerateur() {
+        return generateur;
     }
 
     public void ajouterPieces(int plus) {
@@ -88,7 +101,9 @@ public class Joueur {
             System.out.println("trop de quartier");
             return;
         }
-        if (this.getNom() == "Navigatrice") {
+
+        if(this.getNom().equals("Navigatrice")){
+
             System.out.println("Vous n'avez pas le droit de construire");
             return;
         }
@@ -137,12 +152,68 @@ public class Joueur {
         return temp;
     }
 
+    public boolean aTroisQuartiersDuMemeType(PlateauDeJeu plateau) {
+        Quartier[] quartiersDuJoueur = plateau.getQuartiersDuJoueur(this);
+        Map<String, Integer> compteurQuartiers = new HashMap<>();
+        for (Quartier quartier : plateau.getQuartiersDuJoueur(this)) {
+            if (quartier != null) {
+                compteurQuartiers.put(quartier.getType(), compteurQuartiers.getOrDefault(quartier.getType(), 0) + 1);
+                if (compteurQuartiers.get(quartier.getType()) >= 3) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean possedeCatacombes() {
+        return this.possedeCatacombes;
+    }
+
+    public void obtenirCatacombes() {
+        this.possedeCatacombes = true;
+    }
+
+    /* Je comprends pas vraiment ce qu'il faut faire la
+    public void marquerPointsCatacombes() {
+        if (this.possedeCatacombes) {
+        }
+    }
+
+    public void retirerCatacombesDeLaMain() {
+
+    }
+
+    public void ajouterCatacombesALaMain() {
+
+    }
+    */
+
+    /* il manque peut être des trucs pour le donjons*/ 
+    public boolean peutAffecterDonjon(Personnage personnage) {
+        return personnage.getRang() < Quartier.RANG_POUVOIR_MAX;
+    }
+
+
     public void reinitialiser() {
         this.tresor = 0;
         this.nbQuartier = 0;
         this.main.clear();
     }
 
-    public void ajouterPieces() {
+
+    public void ajouterPoints(int pointsBasilique) {
+    }
+
+    public void setEffetCapitoleUtilise(boolean b) {
+    }
+
+    public boolean possedeDracoport() {
+        return true;
+    }
+
+    public boolean aUtiliseEffetCapitole() {
+        return true;
+
     }
 }

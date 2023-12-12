@@ -2,8 +2,6 @@ package application;
 
 import modele.Pioche;
 
-import modele.*;
-
 public class Configuration {
 	
     private static Personnage assassin = new Assassin();

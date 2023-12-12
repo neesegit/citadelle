@@ -173,4 +173,10 @@ public class Voyante extends Personnage {
             joueur.remove(id-1);
         }
     }
+
+    @Override
+    public void utiliserPouvoirAvatar() {
+
+
+    }
 }

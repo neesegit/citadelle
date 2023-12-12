@@ -18,11 +18,15 @@ public class Quartier {
         return this.type;
     }
 
+    public static final int RANG_POUVOIR_MAX = 8;
+
     public void setType(String type){
-        //si le type correspond à un des quartiers alors tout vas bien sinon le type devient vide
-        if (type == this.TYPE_QUARTIERS[0] || type == this.TYPE_QUARTIERS[1] || type == this.TYPE_QUARTIERS[2] || type == this.TYPE_QUARTIERS[3] || type == this.TYPE_QUARTIERS[4]){
+        // Utilisation de equals pour comparer les chaînes de caractères
+        if (type.equals(this.TYPE_QUARTIERS[0]) || type.equals(this.TYPE_QUARTIERS[1]) ||
+                type.equals(this.TYPE_QUARTIERS[2]) || type.equals(this.TYPE_QUARTIERS[3]) ||
+                type.equals(this.TYPE_QUARTIERS[4])){
             this.type = type;
-        }else {
+        } else {
             this.type = "";
         }
     }

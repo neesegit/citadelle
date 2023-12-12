@@ -31,10 +31,12 @@ public class Navigatrice extends Personnage {
                 return;
             }
         }
+
     }
 
     @Override
     public void construire(Quartier nouveau) {
         System.out.println("En tant que navigatrice, vous appartenez aux mers, donc construire ne servirait à rien");
+
     }
 }

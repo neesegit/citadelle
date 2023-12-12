@@ -88,4 +88,9 @@ public class Cardinal extends Personnage {
     public void utiliserPouvoir() {
         System.out.println("Ce personnage n'a pas de pouvoir particulier");
     }
+
+    @Override
+    public void utiliserPouvoirAvatar() {
+
+    }
 }
