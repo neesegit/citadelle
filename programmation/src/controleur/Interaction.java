@@ -32,10 +32,10 @@ public class Interaction {
 			// "+borneMax+"[ : ");
 			if (sc.hasNextInt()) {
 				i = sc.nextInt();
-				if (i >= borneMin && i < borneMax) {
+				if (i >= borneMin && i <= borneMax) {
 					saisieValide = true;
 				} else {
-					System.out.println("L'entier doit être dans l'intervalle [" + borneMin + ", " + borneMax + "[.");
+					System.out.println("L'entier doit être dans l'intervalle [" + borneMin + ", " + borneMax +"].");
 				}
 			} else {
 				System.out.println("Veuillez entrer un entier valide.");
@@ -69,7 +69,7 @@ public class Interaction {
 	// renvoie une chaine de caractere lue au clavier:
 	public static String lireUneChaine() {
 		String retour = "";
-		retour = sc.nextLine();
+		retour = sc.next();
 
 		return retour;
 	}

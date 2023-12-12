@@ -1,5 +1,6 @@
 package application;
 
+import controleur.Interaction;
 import modele.*;
 
 public class Configuration {
@@ -99,8 +100,40 @@ public class Configuration {
 		plateauDeJeu.ajouterPersonnage(marchande);
 		plateauDeJeu.ajouterPersonnage(roi);
 		plateauDeJeu.ajouterPersonnage(voleur);
-		
-		plateauDeJeu.ajouterJoueur(joueur);
+
+        System.out.println("Combien de joueur(s) pour cette partie (max : 9) ?");
+        int nbJoueur=Interaction.lireUnEntier(1, 9);
+
+        for(int i=0;i<nbJoueur;i++){
+            System.out.print("");
+            System.out.print("Entrez le nom du joueur " + (i + 1) + " : ");
+            String nomDuJoueur=Interaction.lireUneChaine();
+            Joueur nouveauJoueur=new Joueur(nomDuJoueur);
+            nouveauJoueur.setType(false);
+            plateauDeJeu.ajouterJoueur(nouveauJoueur);
+        }
+        System.out.println("Voulez-vous ajouter des bots ?");
+        boolean choix= Interaction.lireOuiOuNon();
+        if(choix){
+            System.out.println("Combien de bots voulez-vous (max : "+(9-nbJoueur)+")");
+            int nbBots=Interaction.lireUnEntier(1, 9-nbJoueur);
+            int i = nbJoueur;
+            while (i <= nbBots) {
+                Joueur nouveauJoueur=new Joueur("Boti" + (i - nbJoueur + 1));
+                nouveauJoueur.setType(true);
+                plateauDeJeu.ajouterJoueur(nouveauJoueur);
+                i++;
+            }
+        }
+
+        architecte.setPlateau(plateauDeJeu);
+        assassin.setPlateau(plateauDeJeu);
+        condotierre.setPlateau(plateauDeJeu);
+        eveque.setPlateau(plateauDeJeu);
+        magicienne.setPlateau(plateauDeJeu);
+        marchande.setPlateau(plateauDeJeu);
+        roi.setPlateau(plateauDeJeu);
+        voleur.setPlateau(plateauDeJeu);
 
         pioche.ajouter(bibliotheque);
         pioche.ajouter(forge);

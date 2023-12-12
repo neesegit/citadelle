@@ -9,7 +9,7 @@ import modele.Quartier;
 import modele.Roi;
 import modele.*;
 
-public public class TestEchevin {
+public class TestEchevin {
     public static void main(String[] args) {
         TestEchevin test = new TestEchevin();
         // test.test1(); initialisation
