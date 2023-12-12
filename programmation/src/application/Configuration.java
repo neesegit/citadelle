@@ -1,5 +1,6 @@
 package application;
 
+import controleur.Interaction;
 import modele.*;
 
 public class Configuration {
@@ -116,12 +117,13 @@ public class Configuration {
 		plateauDeJeu.ajouterPersonnage(marchande);
 		plateauDeJeu.ajouterPersonnage(roi);
 		plateauDeJeu.ajouterPersonnage(voleur);
+
 		
 
 		System.out.println("Combien de joueur(s) pour cette partie (max : 9) ?");
         int nbJoueur=Interaction.lireUnEntier(1, 9);
         for(int i=0;i<nbJoueur;i++){
-            System.out.println();
+
             System.out.print("Entrez le nom du joueur " + (i + 1) + " : ");
             String nomDuJoueur=Interaction.lireUneChaine();
             Joueur nouveauJoueur=new Joueur(nomDuJoueur);
@@ -129,7 +131,9 @@ public class Configuration {
             plateauDeJeu.ajouterJoueur(nouveauJoueur);
         }
         System.out.println("Voulez-vous ajouter des bots ?");
+
         boolean choix=Interaction.lireOuiOuNon();
+
         if(choix){
             System.out.println("Combien de bots voulez-vous (max : "+(9-nbJoueur)+")");
             int nbBots=Interaction.lireUnEntier(1, 9-nbJoueur);
@@ -142,6 +146,14 @@ public class Configuration {
             }
         }
 
+        architecte.setPlateau(plateauDeJeu);
+        assassin.setPlateau(plateauDeJeu);
+        condotierre.setPlateau(plateauDeJeu);
+        eveque.setPlateau(plateauDeJeu);
+        magicienne.setPlateau(plateauDeJeu);
+        marchande.setPlateau(plateauDeJeu);
+        roi.setPlateau(plateauDeJeu);
+        voleur.setPlateau(plateauDeJeu);
 
         pioche.ajouter(bibliotheque);
         pioche.ajouter(forge);

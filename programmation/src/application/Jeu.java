@@ -76,13 +76,16 @@ public class Jeu {
     private void initialisation(){
         Pioche pioche=Configuration.nouvellePioche();
         this.m_plateauDeJeu=Configuration.configurationDeBase(pioche);
-        for(int i=0;i<9;i++){
+        System.out.println("Configuration terminée");
+        System.out.println("this.m_plateau : "+this.m_plateauDeJeu);
+        for(int i=0;i<this.m_plateauDeJeu.getNombreJoueurs();i++){
             this.m_plateauDeJeu.getJoueur(i).ajouterPieces(2);
             for(int j=0;j<4;j++){
                 this.m_plateauDeJeu.getJoueur(i).ajouterQuartierDansMain(pioche.piocher());
             }
         }
-        this.m_plateauDeJeu.getJoueur(m_generateur.nextInt(3)).setPossedeCouronne(true);
+        this.m_plateauDeJeu.getJoueur(m_generateur.nextInt(this.m_plateauDeJeu.getNombreJoueurs())-1).setPossedeCouronne(true);
+        System.out.print("Initialisation terminée");
     }
 
     private void gestionCouronne(){
@@ -139,6 +142,7 @@ public class Jeu {
 
     private void tourDeJeu(){
         this.choixPersonnages();
+        System.out.println("Après choixPersonnages");
         for(int i=0;i<this.m_plateauDeJeu.getNombrePersonnages();i++){
             Joueur joueurEnCours = this.m_plateauDeJeu.getPersonnage(i).getJoueur();
             effetBibliotheque(joueurEnCours);
@@ -411,8 +415,8 @@ public class Jeu {
     private void choixPersonnages(){
         int cartes[]=new int[4];
         boolean same=false;
-        Personnage personnages[]=new Personnage[27];
-        for(int i=0;i<8;i++){
+        Personnage personnages[]=new Personnage[this.m_plateauDeJeu.getNombrePersonnages()];
+        for(int i=0;i<this.m_plateauDeJeu.getNombrePersonnages();i++){
             personnages[i]=this.m_plateauDeJeu.getPersonnage(i);
         }
         //Trouver les 4 cartes parmis les 8 qui seront cachées.
