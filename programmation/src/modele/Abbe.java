@@ -66,4 +66,9 @@ public class Abbe extends Personnage {
     public void utiliserPouvoir(){
         //rien à faire ici
     }
+
+    @Override
+    public void utiliserPouvoirAvatar() {
+
+    }
 }

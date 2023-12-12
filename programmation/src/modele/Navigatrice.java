@@ -27,4 +27,9 @@ public class Navigatrice extends Personnage{
             }
         }
 	}
+
+    @Override
+    public void utiliserPouvoirAvatar() {
+
+    }
 }

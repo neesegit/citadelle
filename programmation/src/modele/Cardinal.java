@@ -22,4 +22,9 @@ public class Cardinal extends Personnage{
         //Vérifier que le Joueur à assez d'or pour batir un quartier, sinon
         //peut prendre de l'or en échange de carte à un autre joueur
     }
+
+    @Override
+    public void utiliserPouvoirAvatar() {
+
+    }
 }

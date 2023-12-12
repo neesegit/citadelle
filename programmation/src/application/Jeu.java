@@ -104,9 +104,9 @@ public class Jeu {
             for(int i=0;i<this.m_plateauDeJeu.getNombreJoueurs();i++){
                 if(this.m_plateauDeJeu.getJoueur(i).nbQuartiersDansCite()>=7){
                     System.out.println("\t\nLa partie est terminé : " + this.m_plateauDeJeu.getJoueur(i).getNom() + " possède une cité complète\n");
-                    for(int i = 0; i < this.m_plateauDeJeu.getNombreJoueurs(); i++){
-                        int pointsBasilique = calculerPointsBasilique(this.m_plateauDeJeu.getJoueur(i));
-                        this.m_plateauDeJeu.getJoueur(i).ajouterPoints(pointsBasilique);
+                    for(int j = 0; j < this.m_plateauDeJeu.getNombreJoueurs(); j++){
+                        int pointsBasilique = calculerPointsBasilique(this.m_plateauDeJeu.getJoueur(j));
+                        this.m_plateauDeJeu.getJoueur(j).ajouterPoints(pointsBasilique);
                     }
                     calculDesPoints();
                     if(!retour){
@@ -120,9 +120,9 @@ public class Jeu {
             for(int i=0;i<this.m_plateauDeJeu.getNombreJoueurs();i++){
                 if(this.m_plateauDeJeu.getJoueur(i).nbQuartiersDansCite()==8){
                     System.out.println("\t\nLa partie est terminé : " + this.m_plateauDeJeu.getJoueur(i).getNom() + " possède une cité complète\n");
-                    for(int i = 0; i < this.m_plateauDeJeu.getNombreJoueurs(); i++){
-                        int pointsBasilique = calculerPointsBasilique(this.m_plateauDeJeu.getJoueur(i));
-                        this.m_plateauDeJeu.getJoueur(i).ajouterPoints(pointsBasilique);
+                    for(int j = 0; j < this.m_plateauDeJeu.getNombreJoueurs(); j++){
+                        int pointsBasilique = calculerPointsBasilique(this.m_plateauDeJeu.getJoueur(j));
+                        this.m_plateauDeJeu.getJoueur(j).ajouterPoints(pointsBasilique);
                     }
                     calculDesPoints();
                     if(!retour){

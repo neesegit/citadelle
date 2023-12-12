@@ -1,6 +1,8 @@
 package modele;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 public class Joueur {
@@ -47,8 +49,9 @@ public class Joueur {
         return this.nbQuartier;
     }
     public Quartier[] getCite() {
-        return this.cite;
+        return cite;
     }
+
     public ArrayList<Quartier> getMain(){
         return this.main;
     }
@@ -185,10 +188,23 @@ public class Joueur {
     }
 
 
-     */
     public void reinitialiser() {
         this.tresor = 0;
         this.nbQuartier = 0;
         this.main.clear();
+    }
+
+    public void ajouterPoints(int pointsBasilique) {
+    }
+
+    public void setEffetCapitoleUtilise(boolean b) {
+    }
+
+    public boolean possedeDracoport() {
+        return true;
+    }
+
+    public boolean aUtiliseEffetCapitole() {
+        return true;
     }
 }

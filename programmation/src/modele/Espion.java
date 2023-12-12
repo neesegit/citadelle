@@ -58,4 +58,9 @@ public class Espion extends Personnage{
 		}
         
 	}
+
+	@Override
+	public void utiliserPouvoirAvatar() {
+
+	}
 }

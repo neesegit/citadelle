@@ -48,4 +48,10 @@ public class Voyante extends Personnage {
             // on redistribue une carte a chaque joueur que a participer
         }
     }
+
+    @Override
+    public void utiliserPouvoirAvatar() {
+
+
+    }
 }
