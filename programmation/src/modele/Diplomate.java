@@ -141,7 +141,7 @@ public class Diplomate extends Personnage {
             int id = random.nextInt(getPlateau().getNombrePersonnages()) + 1;
             cible = getPlateau().getJoueur(id - 1);
 
-            while (cible.getNom() == "Diplomate") {
+            while (cible.getPersonnage().getNom() == "Diplomate" || cible.getPersonnage().getNom() == "Eveque") {
                 System.out.println("Vous ne pouvez pas choisir ce personnage");
                 id = random.nextInt(getPlateau().getNombrePersonnages()) + 1;
                 cible = getPlateau().getJoueur(id - 1);

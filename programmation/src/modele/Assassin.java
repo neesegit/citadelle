@@ -1,9 +1,12 @@
 package modele;
 
 import controleur.Interaction;
+import java.util.Random;
+
 
 public class Assassin extends Personnage {
-
+	private Random random = new Random();
+	private Joueur cible;
 	private boolean assassine = false;
 
 	public Assassin() {
@@ -31,8 +34,18 @@ public class Assassin extends Personnage {
 
 	@Override
 	public void utiliserPouvoirAvatar() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'utiliserPouvoirAvatar'");
+		if (random.nextBoolean()) {
+
+            int id = random.nextInt(getPlateau().getNombrePersonnages()) + 1;
+            cible = this.getPlateau().getJoueur(id - 1);
+
+            while (cible.getPersonnage().getNom() == "Diplomate") {
+                System.out.println("Vous ne pouvez pas choisir ce personnage");
+                id = random.nextInt(getPlateau().getNombrePersonnages()) + 1;
+                cible = getPlateau().getJoueur(id - 1);
+            }
+			cible.getPersonnage().setAssassine();
+		}
 	}
 
 }
