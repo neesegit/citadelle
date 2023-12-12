@@ -1,4 +1,4 @@
-/
+
   package test;
   
   import modele.Assassin;
@@ -7,6 +7,7 @@
   import modele.PlateauDeJeu;
   import modele.Quartier;
   import modele.Roi;
+  import modele.*;
   
   public class TestEmpereur {
     public static void main(String[] args) {

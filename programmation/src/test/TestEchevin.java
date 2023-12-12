@@ -7,6 +7,7 @@ import modele.Magicienne;
 import modele.PlateauDeJeu;
 import modele.Quartier;
 import modele.Roi;
+import modele.*;
 
 public public class TestEchevin {
     public static void main(String[] args) {
@@ -94,7 +95,7 @@ public public class TestEchevin {
         Quartier quartier = new Quartier("palais", Quartier.TYPE_QUARTIERS[2], 5);
         Test.test(echevin.getJoueur().nbQuartiersDansCite() == 0, "Verification que la cite de l'echevin est vide");
         Test.test(roi.getJoueur().nbQuartiersDansCite() == 0, "Verification que la cite du roi est vide");
-        echevin.ajouterQuartierDansCite(quartier);
+        echevin.ajouterQuartier(quartier);
         echevin.utiliserPouvoir();
         roi.getJoueur().ajouterPieces(5);
         echevin.getJoueur().ajouterPieces(5);

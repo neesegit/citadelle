@@ -6,6 +6,7 @@ import modele.Joueur;
 import modele.PlateauDeJeu;
 import modele.Quartier;
 import modele.Roi;
+import modele.*;
 
 public class TestPatricien {
     public static void main(String[] args) {
@@ -83,7 +84,7 @@ public class TestPatricien {
         patricien.setJoueur(joueur);
         roi.setJoueur(joueur2);
         roi.getJoueur().setPossedeCouronne(true);
-        patricien.setEnsorcelle(); // connait pas encore la fonction
+        //patricien.setEnsorcelle(); // connait pas encore la fonction
         patricien.utiliserPouvoir(); // que pour ce tour là
         Test.test(patricien.getJoueur().getPossedeCouronne() == true,
                 "Verifier que la couronne soit bien sur l'assassin");

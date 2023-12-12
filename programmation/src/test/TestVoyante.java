@@ -1,4 +1,4 @@
-/
+
   package test;
   
   import java.util.ArrayList;
@@ -10,6 +10,7 @@
   import modele.PlateauDeJeu;
   import modele.Quartier;
   import modele.Roi;
+  import modele.*;
   
   public class TestVoyante {
   public static void main(String[] args) {
@@ -145,24 +146,24 @@
   System.out.println("");
   System.out.print("Main de la magicienne (" + voyante.getJoueur().getNom() +
   "): ");
-  ArrayList<Quartier> mainVoyante = voyante.getJoueur().getMain();
+  mainVoyante = voyante.getJoueur().getMain();
   for (int i = 0; i < mainVoyante.size(); i++)
   System.out.print(mainVoyante.get(i).getNom() + ", ");
   System.out.println("");
   System.out.print("Main de la marchande (" + marchande.getJoueur().getNom() +
   "): ");
-  ArrayList<Quartier> mainMarchande = marchande.getJoueur().getMain();
+  mainMarchande = marchande.getJoueur().getMain();
   for (int i = 0; i < mainMarchande.size(); i++)
   System.out.print(mainMarchande.get(i).getNom() + ", ");
   System.out.println("");
   
-  Test.test(marchande.getJoueur().nbQuartiersDansMain(),
+  Test.test(marchande.getJoueur().nbQuartiersDansMain() == 0,
   "On verifie que chacun a bin le même nombre carte à la fin");
-  Test.test(roi.getJoueur().nbQuartiersDansMain(),
+  Test.test(roi.getJoueur().nbQuartiersDansMain() == 3,
   "On verifie que chacun a bin le même nombre carte à la fin");
-  Test.test(assassin.getJoueur().nbQuartiersDansMain(),
+  Test.test(assassin.getJoueur().nbQuartiersDansMain() == 3,
   "On verifie que chacun a bin le même nombre carte à la fin");
-  Test.test(voyante.getJoueur().nbQuartiersDansMain(),
+  Test.test(voyante.getJoueur().nbQuartiersDansMain() == 2,
   "On verifie que chacun a bin le même nombre carte à la fin");
   Quartier quartier1 = new Quartier("caserne", Quartier.TYPE_QUARTIERS[1], 3);
   Quartier quartier2 = new Quartier("manoir", Quartier.TYPE_QUARTIERS[2], 3);
@@ -175,4 +176,3 @@
   "Verifiez que deux construction par tour");
   }
   }
- /

@@ -1,6 +1,6 @@
 package test;
 
-import modele.Caracteristiques;
+import modele.*;
 import modele.Joueur;
 import modele.PlateauDeJeu;
 import modele.Quartier;

@@ -1,4 +1,3 @@
-/
 package test;
 
 import modele.Caracteristiques;
@@ -7,6 +6,7 @@ import modele.Joueur;
 import modele.PlateauDeJeu;
 import modele.Quartier;
 import modele.Roi;
+import modele.*;
 
 public class TestCapitaine {
     public static void main(String[] args) {

@@ -17,6 +17,8 @@ public class Archiviste extends Personnage {
 
     private int choixCarte = 0;
 
+    Random random = new Random();
+
     public Archiviste() {
         super("Archiviste", 7, Caracteristiques.ARCHIVISTE);
         this.plateau = getPlateau();

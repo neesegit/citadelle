@@ -39,4 +39,10 @@ public class Navigatrice extends Personnage {
         System.out.println("En tant que navigatrice, vous appartenez aux mers, donc construire ne servirait à rien");
 
     }
+
+    @Override
+    public void utiliserPouvoirAvatar() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'utiliserPouvoirAvatar'");
+    }
 }

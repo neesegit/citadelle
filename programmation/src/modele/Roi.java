@@ -36,4 +36,10 @@ public class Roi extends Personnage {
         this.getJoueur().ajouterPieces(compteur);
         System.out.println("Ajouter " + compteur + " pièce" + (compteur > 1 ? "s" : ""));
     }
+
+    @Override
+    public void utiliserPouvoirAvatar() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'utiliserPouvoirAvatar'");
+    }
 }

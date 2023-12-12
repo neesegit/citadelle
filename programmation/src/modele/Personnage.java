@@ -155,4 +155,6 @@ public abstract class Personnage {
         return null;
     }
 
+    public abstract void utiliserPouvoirAvatar();
+
 }

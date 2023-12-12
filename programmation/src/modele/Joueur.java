@@ -34,6 +34,14 @@ public class Joueur {
         this.possedeCatacombes = false;
     }
 
+    public boolean isBot(){
+        return this.bot;
+    }
+
+    public void setType(boolean etatBot){
+        this.bot = etatBot;
+    }
+
     public String getNom() {
         return this.nom;
     }
@@ -50,6 +58,7 @@ public class Joueur {
         return cite;
     }
 
+    
 
     public ArrayList<Quartier> getMain(){
 
@@ -216,4 +225,6 @@ public class Joueur {
         return true;
 
     }
+
+    
 }

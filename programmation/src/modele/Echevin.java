@@ -60,9 +60,6 @@ public class Echevin extends Personnage{
         System.out.print("Votre choix : ");
         vraiChoix = Interaction.lireUnEntier(1, 3);
 
-        if(vraiChoix == 1){
-            tableauJoueurs.get(idChoix1).getPersonnage().setJetonEchevin(true);
-        }
     }
 
 

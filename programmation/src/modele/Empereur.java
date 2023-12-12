@@ -88,20 +88,20 @@ public class Empereur extends Personnage {
 
         while (choixBot) {
             int id = random.nextInt(this.plateau.getNombrePersonnages()) + 1;
-            cible = this.plateau.getPersonnage(id - 1);
-            if (cible.getNom() != "Empereur")
+            cible = this.plateau.getJoueur(id - 1);
+            if (cible.getPersonnage().getNom() != "Empereur")
                 choixBot = false;
         }
 
         this.getJoueur().setPossedeCouronne(false);
-        cible.getJoueur().setPossedeCouronne(true);
+        cible.setPossedeCouronne(true);
 
         boolean choixPCBot = random.nextBoolean();
         if (choixPCBot) {
             this.getJoueur().ajouterPieces(1);
-            cible.getJoueur().retirerPieces(1);
+            cible.retirerPieces(1);
         } else {
-            this.getJoueur().ajouterQuartierDansMain(cible.getJoueur().retirerQuartierDansMain());
+            this.getJoueur().ajouterQuartierDansMain(cible.retirerQuartierDansMain());
         }
     }
 }

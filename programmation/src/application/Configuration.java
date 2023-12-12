@@ -1,6 +1,6 @@
 package application;
 
-import modele.Pioche;
+import modele.*;
 
 public class Configuration {
 	

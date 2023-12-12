@@ -30,4 +30,10 @@ public class Eveque extends Personnage {
         // attention pas dans son pouvoir mais dans les personnage de rang 8 il est
         // protéger
     }
+
+    @Override
+    public void utiliserPouvoirAvatar() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'utiliserPouvoirAvatar'");
+    }
 }

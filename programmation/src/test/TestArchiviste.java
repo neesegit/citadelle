@@ -6,6 +6,7 @@ import modele.Joueur;
 import modele.Pioche;
 import modele.PlateauDeJeu;
 import modele.Quartier;
+import modele.*;
 
 public class TestArchiviste {
     public static void main(String[] args) {

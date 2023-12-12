@@ -6,6 +6,7 @@ import modele.Joueur;
 import modele.PlateauDeJeu;
 import modele.Quartier;
 import modele.Roi;
+import modele.*;
 
 public class TestNegociant {
   public static void main(String[] args) {

@@ -115,7 +115,7 @@ public class Diplomate extends Personnage {
                 if (quartierSecondJoueur[idQuartierSecond].getCout() - quartierJoueur[idQuartier].getCout() == 0) {
                     this.getJoueur().ajouterQuartierDansCite(
                             cible.retirerQuartierDansCite(quartierSecondJoueur[idQuartierSecond].getNom()));
-                    cible.ajouterQuartier(
+                    cible.getPersonnage().ajouterQuartier(
                             this.getJoueur().retirerQuartierDansCite(this.quartierJoueur[idQuartier].getNom()));
                 }
                 return;
@@ -123,11 +123,11 @@ public class Diplomate extends Personnage {
             if (quartierSecondJoueur[idQuartierSecond].getCout() - quartierJoueur[idQuartier].getCout() > 0) {
                 this.getJoueur().retirerPieces(
                         quartierSecondJoueur[idQuartierSecond].getCout() - quartierJoueur[idQuartier].getCout());
-                cible.ajouterPieces();
+                cible.getPersonnage().ajouterPieces();
             }
             this.getJoueur().ajouterQuartierDansCite(
                     cible.retirerQuartierDansCite(quartierSecondJoueur[idQuartierSecond].getNom()));
-            cible.ajouterQuartier(
+            cible.getPersonnage().ajouterQuartier(
                     this.getJoueur().retirerQuartierDansCite(this.quartierJoueur[idQuartier].getNom()));
         }
     }

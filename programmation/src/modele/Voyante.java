@@ -85,34 +85,8 @@ public class Voyante extends Personnage {
                 CopieCartesSelectionne.add(CarteDelete);
                 joueur.add(getPlateau().getJoueur(i));
             }
-<<<<<<< HEAD
-            int NbCarteDonné = CopieCartesSelectionne.size();
-            for (int i = 0; i < NbCarteDonné; i++) {
-                getJoueur().ajouterQuartierDansMain(CopieCartesSelectionne.get(i));
-            }
-            /*
-             * for (int i; i < NbCarteDonné; i++) {
-             * while (!choix) {
-             * System.out.println(
-             * "Vous devez redonner une carte quartier de votre choix a chaque personne qui vous a donné une carte"
-             * );
-             * System.out.println("Avec quel personnage voulez-vous donner votre cartes ?");
-             * for (int i = 0; i < getPlateau().getNombrePersonnages(); i++) {
-             * System.out.println(i + 1 + " " + getPlateau().getPersonnage(i).getNom());
-             * }
-             * while (!echange) {
-             * 
-             * }
-             * }
-             * }
-             */
-            // test
-=======
+
         }
-
->>>>>>> e43b9cb4ba04c93fd9ac1791cc097f278d63450c
-
-
         
         for(int i = 0; i < joueur.size(); i++){
             this.getJoueur().ajouterQuartierDansMain(CopieCartesSelectionne.get(i));
@@ -172,11 +146,5 @@ public class Voyante extends Personnage {
             CopieCartesSelectionne.remove(idQuartier-1);
             joueur.remove(id-1);
         }
-    }
-
-    @Override
-    public void utiliserPouvoirAvatar() {
-
-
     }
 }

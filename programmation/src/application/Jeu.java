@@ -14,7 +14,7 @@ public class Jeu {
     private Random m_generateur;
     private Joueur m_premier;
 
-    private Jeu(){
+    public Jeu(){
         m_plateauDeJeu=null;
         m_numeroConfiguration=1;
         m_generateur=new Random();
