@@ -1,11 +1,17 @@
 package modele;
 
+import java.util.Random;
+
 import controleur.Interaction;
 
 public class Navigatrice extends Personnage {
 
     private PlateauDeJeu plateau;
     private Pioche pioche;
+
+    private boolean choixBot;
+
+    Random random = new Random();
 
     public Navigatrice() {
         super("Navigatrice", 7, Caracteristiques.NAVIGATRICE);
@@ -42,7 +48,17 @@ public class Navigatrice extends Personnage {
 
     @Override
     public void utiliserPouvoirAvatar() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'utiliserPouvoirAvatar'");
+        while (true) {
+            choixBot = random.nextBoolean();
+            if (choixBot) {
+                this.getJoueur().ajouterPieces(4);
+                return;
+            } else if (choixBot) {
+                for (int i = 0; i < 4; i++) {
+                    this.getJoueur().ajouterQuartierDansMain(pioche.piocher()); // this.getJoueur() ... ?
+                }
+                return;
+            }
+        }    
     }
 }

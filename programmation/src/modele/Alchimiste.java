@@ -23,11 +23,9 @@ public class Alchimiste extends Personnage {
     }
 
     @Override
-    public void utiliserPouvoir() {
-    }
+    public void utiliserPouvoir() {}
 
     @Override
-    public void utiliserPouvoirAvatar() {
-    }
+    public void utiliserPouvoirAvatar() {}
 
 }

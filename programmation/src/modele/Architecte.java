@@ -13,8 +13,5 @@ public class Architecte extends Personnage {
     }
 
     @Override
-    public void utiliserPouvoirAvatar() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'utiliserPouvoirAvatar'");
-    }
+    public void utiliserPouvoirAvatar() {}
 }
