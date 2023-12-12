@@ -78,13 +78,13 @@ public class Diplomate extends Personnage {
             }
             quartierSecondJoueur = cible.getCite();
             System.out.println("Quel quartier voulez vous retirer de votre cité ?");
-            for (int i = 0; i < this.quartierJoueur.length; i++)
+            for (int i = 0; i < this.getJoueur().nbQuartiersDansCite(); i++)
                 System.out.println(i + 1 + " "
-                        + (this.quartierJoueur[i] == null ? this.quartierJoueur[i] : this.quartierJoueur[i].getNom()));
+                        + this.quartierJoueur[i].getNom());
             choixfait = false;
             while (!choixfait) {
-                System.out.println("Votre choix (non null): ");
-                idQuartier = Interaction.lireUnEntier(1, this.quartierJoueur.length + 1) - 1;
+                System.out.println("Votre choix : ");
+                idQuartier = Interaction.lireUnEntier(1, this.getJoueur().nbQuartiersDansCite() + 1) - 1;
                 if (quartierJoueur[idQuartier] != null) {
                     choixfait = true;
                 }
@@ -100,13 +100,12 @@ public class Diplomate extends Personnage {
                 return;
             }
             System.out.println("Quel quartier voulez vous retirer de la cité de l'autre joueur ?");
-            for (int i = 0; i < quartierSecondJoueur.length; i++)
-                System.out.println(i + 1 + " " + (this.quartierSecondJoueur[i] == null ? this.quartierSecondJoueur[i]
-                        : this.quartierSecondJoueur[i].getNom()));
+            for (int i = 0; i < cible.nbQuartiersDansCite(); i++)
+                System.out.println(i + 1 + " " + this.quartierSecondJoueur[i].getNom());
             choixfait = false;
             while (!choixfait) {
                 System.out.println("Votre choix (non null): ");
-                idQuartierSecond = Interaction.lireUnEntier(1, quartierSecondJoueur.length + 1) - 1;
+                idQuartierSecond = Interaction.lireUnEntier(1, cible.nbQuartiersDansCite() + 1) - 1;
                 if (quartierSecondJoueur[idQuartierSecond] != null) {
                     choixfait = true;
                 }
