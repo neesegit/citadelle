@@ -646,6 +646,8 @@ public class Jeu {
     private void calculDesPoints(){
         for(int i = 0; i < this.m_plateauDeJeu.getNombreJoueurs(); i++){
             Quartier[] quartiers = this.m_plateauDeJeu.getJoueur(i).getCite();
+            Joueur joueur=this.m_plateauDeJeu.getJoueur(i);
+            Quartier[] cite=joueur.getCite();
             int cout = 0;
             Set<String> typesDifferents = new HashSet<>(); // Ensemble pour stocker les types différents
 
