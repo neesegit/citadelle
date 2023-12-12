@@ -71,12 +71,8 @@ public class Abbe extends Personnage {
     }
 
     @Override
-    public void utiliserPouvoir() {
-        // rien à faire ici
-    }
+    public void utiliserPouvoir() {}
 
     @Override
-    public void utiliserPouvoirAvatar() {
-
-    }
+    public void utiliserPouvoirAvatar() {}
 }

@@ -39,7 +39,8 @@ public class Roi extends Personnage {
 
     @Override
     public void utiliserPouvoirAvatar() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'utiliserPouvoirAvatar'");
+        if (getJoueur() != null) {
+            this.getJoueur().setPossedeCouronne(true);
+        }
     }
 }

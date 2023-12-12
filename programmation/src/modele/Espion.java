@@ -1,6 +1,7 @@
 package modele;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import controleur.Interaction;
 
@@ -16,6 +17,8 @@ public class Espion extends Personnage {
 	private int compteur = 0;
 	private boolean cibleVerrouille = false;
 	private Joueur joueur;
+
+	Random random = new Random();
 
 	public Espion() {
 		super("Espion", 2, Caracteristiques.ESPION);
@@ -83,7 +86,51 @@ public class Espion extends Personnage {
 
 	@Override
 	public void utiliserPouvoirAvatar() {
+		
+		while (!cibleVerrouille) {
+			choixJoueur = random.nextInt(1, getPlateau().getNombreJoueurs());
+			if (getJoueur() != getPlateau().getJoueur(choixJoueur)) {
+				cibleVerrouille = true;
+			}
+		}
 
+		joueur = getPlateau().getJoueur(choixJoueur);
+
+		// Choix type de quartier
+		int choixQuartierBot = random.nextInt(1, 5);
+
+		if(choixQuartierBot == 1){
+			choixQuartier = "NOBLE";
+		}
+		if(choixQuartierBot == 2){
+			choixQuartier = "MILITIARE";
+		}
+		if(choixQuartierBot == 3){
+			choixQuartier = "RELIGIEUX";
+		}
+		if(choixQuartierBot == 4){
+			choixQuartier = "COMMERCANT";
+		}
+		if(choixQuartierBot == 5){
+			choixQuartier = "MERVEILLE";
+		}
+
+		main = joueur.getMain();
+		for (int i = 0; i < main.size(); i++) {
+			if (main.get(i).getType().equals(choixQuartier)) {
+				compteur++;
+			}
+		}
+
+		if (compteur == 0) {
+			return;
+		}
+		// Don de pièce et ajout de carte dans la main
+		joueur.retirerPieces((joueur.nbPieces() < compteur ? compteur - joueur.nbPieces() : compteur));
+		this.getJoueur().ajouterPieces((joueur.nbPieces() < compteur ? compteur - joueur.nbPieces() : compteur));
+		for (int i = 0; i < compteur; i++) {
+			this.getJoueur().ajouterQuartierDansMain(pioche.piocher());
+		}
 	}
 }
 

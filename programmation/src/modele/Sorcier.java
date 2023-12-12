@@ -1,5 +1,7 @@
 package modele;
 
+import java.util.Random;
+
 import controleur.Interaction;
 
 public class Sorcier extends Personnage{
@@ -11,6 +13,8 @@ public class Sorcier extends Personnage{
     private Quartier quartier;
 
     private boolean choix;
+
+    Random random = new Random();
 
     public Sorcier() {
         super("Sorcier", 3, Caracteristiques.SORCIER);
@@ -60,6 +64,34 @@ public class Sorcier extends Personnage{
     }
 
     @Override
-    public void utiliserPouvoirAvatar() {}
+    public void utiliserPouvoirAvatar() {
+
+        idJoueur = random.nextInt(1, getPlateau().getNombreJoueurs())-1;
+
+        joueur = getPlateau().getJoueur(idJoueur);
+
+        idCarte = random.nextInt(1, joueur.getMain().size());
+
+        quartier = joueur.getMain().get(idCarte);
+
+        choix = random.nextBoolean();
+
+        if(choix){
+            //prendre la carte
+            this.getJoueur().ajouterQuartierDansMain(quartier);
+        } else {
+            //construire la carte
+            if (this.getJoueur() == null || this.getAssassine() == true) {
+                return;
+            }
+            if (this.getJoueur().nbPieces() < quartier.coutConstruction) {
+                System.out.println("Vous n'avez pas  d'or pour construire ce quartier");
+                return;
+            }
+            this.getJoueur().ajouterQuartierDansCite(quartier);
+            this.getJoueur().retirerPieces(quartier.coutConstruction);
+        }
+
+    }
     
 }

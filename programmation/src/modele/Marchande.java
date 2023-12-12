@@ -39,7 +39,7 @@ public class Marchande extends Personnage {
 
     @Override
     public void utiliserPouvoirAvatar() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'utiliserPouvoirAvatar'");
+        this.getJoueur().ajouterPieces(1);
+        System.out.println("Ajouter 1 pièce");
     }
 }
