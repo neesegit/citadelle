@@ -36,6 +36,7 @@ public class Diplomate extends Personnage {
         }
     }
 
+    
     @Override
     public void utiliserPouvoir() {
         this.quartierJoueur = this.getJoueur().getCite();
