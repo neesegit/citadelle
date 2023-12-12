@@ -10,6 +10,8 @@ public abstract class Personnage {
     private boolean vole;
     private PlateauDeJeu plateau;
     private boolean DejaConstruitUnTruc;
+    private boolean jetonEchevinVrai;
+    private boolean jetonEchevinFaux;
 
     public Personnage(String nom, int rang, String caracteristiques) {
         this.nom = nom;
@@ -19,8 +21,26 @@ public abstract class Personnage {
         this.assassine = false;
         this.vole = false;
         this.DejaConstruitUnTruc = true;
+        this.jetonEchevinVrai = false;
+        this.jetonEchevinFaux = false;
         // il y a un perso qui peut construire deux fois attention a changer pendant le
         // pouvoir.
+    }
+
+    public boolean getJetonEchevinVrai() {
+        return this.jetonEchevinVrai;
+    }
+
+    public void setJetonEchevinVrai(boolean etatVrai) {
+        this.jetonEchevinVrai = etatVrai;
+    }
+
+    public boolean getJetonEchevinFaux() {
+        return this.jetonEchevinFaux;
+    }
+
+    public void setJetonEchevinFaux(boolean etatFaux) {
+        this.jetonEchevinFaux = etatFaux;
     }
 
     public boolean getDejaConstruit() {
