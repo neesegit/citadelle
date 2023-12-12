@@ -1,7 +1,5 @@
 package modele;
 
-import java.util.Random;
-
 import controleur.Interaction;
 
 public class Voleur extends Personnage {
@@ -15,32 +13,17 @@ public class Voleur extends Personnage {
 	@Override
 	public void utiliserPouvoir() {
 		System.out.println("Quel personnage voulez-vous volez ? ");
-		for (int i = 0; i < getPlateau().getNombrePersonnages(); i++) { // TODO : Faire qu'un message apparaisse s'il se
-																		// cible lui même et enlever les chiffres degeu
-																		// si possible
-			System.out.println(i + 1 + " " + getPlateau().getPersonnage(i).getNom());
+		for (int i = 0; i < getPlateau().getNombrePersonnages(); i++) {
+			System.out.println(i + 1 + " " + getPlateau().getPersonnage(i).getNom() + " ("
+					+ getPlateau().getJoueur(i).getNom() + ")");
 		}
 		while (!vole) {
 			System.out.print("Votre choix : ");
-			int id = Interaction.lireUnEntier(1, getPlateau().getNombrePersonnages());
+			int id = Interaction.lireUnEntier(1, getPlateau().getNombrePersonnages() + 1);
 			Personnage cible = getPlateau().getPersonnage(id - 1);
 			if (cible.getNom() == "Voleur" || cible.getRang() == 1) {
 				System.out.println("Vous ne pouvez pas voler ce personnage.");
 			} else {
-				vole = true;
-				cible.setVole();
-				getJoueur().ajouterPieces(2);
-			}
-		}
-	}
-
-	@Override
-	public void utiliserPouvoirAvatar() {
-		while (!vole) {
-			Random random=new Random();
-			int id = random.nextInt(getPlateau().getNombrePersonnages())+1;
-			Personnage cible = getPlateau().getPersonnage(id - 1);
-			if (cible.getNom() != "Voleur" && cible.getRang() != 1) {
 				vole = true;
 				cible.setVole();
 				getJoueur().ajouterPieces(2);

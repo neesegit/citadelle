@@ -16,14 +16,6 @@ public class Roi extends Personnage {
         }
     }
 
-    @Override
-    public void utiliserPouvoirAvatar() {
-        System.out.println("Je prends la couronne");
-        if (getJoueur() != null) {
-            this.getJoueur().setPossedeCouronne(true);
-        }
-    }
-
     public void percevoirRessourcesSpecifiques() {
         if (this.getJoueur() == null) {
             System.out.println("Ce joueur n'est pas roi");

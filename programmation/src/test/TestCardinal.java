@@ -1,6 +1,7 @@
-/*package test;
+package test;
 
 import modele.Caracteristiques;
+import modele.Cardinal;
 import modele.Joueur;
 import modele.Magicienne;
 import modele.Pioche;
@@ -13,8 +14,7 @@ public class TestCardinal {
         TestCardinal test = new TestCardinal();
         // test.test1();
         // test.test2();
-        // test.test3();
-        // test.test4();
+        test.test3();
     }
 
     public void test1() {
@@ -39,14 +39,16 @@ public class TestCardinal {
         Joueur joueur3 = new Joueur("Emma");
         plateau.ajouterJoueur(joueur3);
         Cardinal cardinal = new Cardinal();
-        Quartier quartier1 = new Quartier("temple", Quartier.TYPE_QUARTIERS[0], 1);
-        Quartier quartier3 = new Quartier("église", Quartier.TYPE_QUARTIERS[0], 2);
-        cardinal.setJoueur(joueur);
         Magicienne magicienne = new Magicienne();
         Roi roi = new Roi();
         magicienne.setJoueur(joueur2);
         roi.setJoueur(joueur3);
-        Test.test(plateau.getNombrePersonnages() == 3, "nombre de joueurs");
+        cardinal.setJoueur(joueur);
+        cardinal.setPlateau(plateau);
+        magicienne.setPlateau(plateau);
+        roi.setPlateau(plateau);
+        Quartier quartier3 = new Quartier("église", Quartier.TYPE_QUARTIERS[0], 2);
+        Test.test(plateau.getNombreJoueurs() == 3, "nombre de joueurs");
         Pioche pioche = plateau.getPioche();
         Quartier q = new Quartier("temple", Quartier.TYPE_QUARTIERS[0], 1);
         pioche.ajouter(q);
@@ -82,8 +84,7 @@ public class TestCardinal {
         cardinal.percevoirRessourcesSpecifiques();
         Test.test(cardinal.getJoueur().nbQuartiersDansMain() == 3, "Test du nombre de carte dans la main ");
         cardinal.ajouterPieces();
-        cardinal.construire(quartier1);
-        // tj si le pouvoir est dans le overwrite de construire
+        cardinal.construire(quartier3);
         Test.test(cardinal.getJoueur().nbPieces() == 0,
                 "test du nombre de piece normalement comme il utilise les peice des autre bah baam 0");
         Test.test(cardinal.getJoueur().nbQuartiersDansMain() == 3,
@@ -91,24 +92,20 @@ public class TestCardinal {
     }
 
     public void test3() {
-        System.out.println("TEST DE LA PERCEPTION DE RESSOURCE PLUS POUVOIR (PAS DE PIECE)");
+        System.out.println("TEST POUVOIR ET PERCEPTION DE RESSOURCE (PAS ASSEZ POUR PAYER LE QUARTIER)");
         PlateauDeJeu plateau = new PlateauDeJeu();
         Joueur joueur = new Joueur("Billy");
         plateau.ajouterJoueur(joueur);
         Joueur joueur2 = new Joueur("Martin");
         plateau.ajouterJoueur(joueur2);
-        Joueur joueur3 = new Joueur("Emma");
-        plateau.ajouterJoueur(joueur3);
         Cardinal cardinal = new Cardinal();
-        Quartier quartier1 = new Quartier("temple", Quartier.TYPE_QUARTIERS[0], 1);
-        Quartier quartier2 = new Quartier("prison", Quartier.TYPE_QUARTIERS[1], 2);
-        Quartier quartier3 = new Quartier("église", Quartier.TYPE_QUARTIERS[0], 2);
-        cardinal.setJoueur(joueur);
-        Magicienne magicienne = new Magicienne();
         Roi roi = new Roi();
-        magicienne.setJoueur(joueur2);
-        roi.setJoueur(joueur3);
-        Test.test(plateau.getNombrePersonnages() == 3, "nombre de joueurs");
+        roi.setJoueur(joueur2);
+        cardinal.setJoueur(joueur);
+        cardinal.setPlateau(plateau);
+        roi.setPlateau(plateau);
+        Quartier quartier3 = new Quartier("église", Quartier.TYPE_QUARTIERS[0], 2);
+        Test.test(plateau.getNombreJoueurs() == 3, "nombre de joueurs");
         Pioche pioche = plateau.getPioche();
         Quartier q = new Quartier("temple", Quartier.TYPE_QUARTIERS[0], 1);
         pioche.ajouter(q);
@@ -137,18 +134,17 @@ public class TestCardinal {
         joueur.ajouterQuartierDansMain(pioche.piocher());
         joueur2.ajouterQuartierDansMain(pioche.piocher());
         joueur2.ajouterQuartierDansMain(pioche.piocher());
-        joueur3.ajouterQuartierDansMain(pioche.piocher());
-        joueur3.ajouterQuartierDansMain(pioche.piocher());
+        joueur2.ajouterPieces(5);
         Test.test(cardinal.getJoueur().nbQuartiersDansMain() == 2, "Test du nombre de carte dans la main");
-        cardinal.getJoueur().ajouterQuartierDansCite(quartier3);
-        cardinal.percevoirRessourcesSpecifiques();
-        Test.test(cardinal.getJoueur().nbQuartiersDansMain() == 3, "Test du nombre de carte dans la main ");
-        cardinal.construire(quartier1);
-        // je sais pas si il overwrite construire du coup mais c'est ce qui est le plus
-        // logique pour moi
+        cardinal.construire(quartier3);
         Test.test(cardinal.getJoueur().nbPieces() == 0,
                 "test du nombre de piece normalement comme il utilise les peice des autre bah baam 0");
-        Test.test(cardinal.getJoueur().nbQuartiersDansMain() == 1,
-                "Test du nombre de caarte dans la main (trade ces 2 cartes contre 2 pieces)");
+        Test.test(cardinal.getJoueur().nbQuartiersDansMain() == 0,
+                "Test du nombre de carte dans la main du cardinal (trade ces 2 cartes contre 2 pieces)");
+        Test.test(roi.getJoueur().nbQuartiersDansMain() == 4,
+                "Test du nombre de carte dans la main du roi (trade ces 2 cartes contre 2 pieces)");
+        Test.test(roi.getJoueur().nbPieces() == 3,
+                "test du nombre de piece du roi");
+
     }
-} */
+}

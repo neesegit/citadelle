@@ -1,7 +1,5 @@
 package modele;
 
-import java.util.Random;
-
 import controleur.Interaction;
 
 public class Condottiere extends Personnage {
@@ -43,31 +41,6 @@ public class Condottiere extends Personnage {
                             .nbPieces()) {
                         System.out.println("Votre trésor n’est pas suffisant");
                     } else {
-                        choix = true;
-                        getJoueur()
-                                .retirerQuartierDansCite(cible.getJoueur().getCite()[quartierADetruire - 1].getNom());
-                        getJoueur()
-                                .retirerPieces(cible.getJoueur().getCite()[quartierADetruire - 1].coutConstruction - 1);
-                    }
-                }
-            }
-        }
-    }
-
-    @Override
-    public void utiliserPouvoirAvatar() {
-        Random random=new Random();
-        if (random.nextBoolean()) {
-            boolean choix = false;
-            while (!choix) {
-                int id = random.nextInt(getPlateau().getNombrePersonnages());
-                if (id == 0) {
-                    choix = true;
-                } else {
-                    cible = getPlateau().getPersonnage(id - 1);
-                    quartierADetruire = random.nextInt(cible.getJoueur().nbQuartiersDansCite() + 1)+1;
-                    if (cible.getJoueur().getCite()[quartierADetruire - 1].coutConstruction - 1 <= getJoueur()
-                            .nbPieces()) {
                         choix = true;
                         getJoueur()
                                 .retirerQuartierDansCite(cible.getJoueur().getCite()[quartierADetruire - 1].getNom());

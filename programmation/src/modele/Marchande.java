@@ -36,10 +36,4 @@ public class Marchande extends Personnage {
         this.getJoueur().ajouterPieces(1);
         System.out.println("Ajouter 1 pièce");
     }
-
-    @Override
-    public void utiliserPouvoirAvatar() {
-        this.getJoueur().ajouterPieces(1);
-        System.out.println("Ajouter 1 pièce");
-    }
 }

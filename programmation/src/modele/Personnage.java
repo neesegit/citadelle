@@ -23,6 +23,14 @@ public abstract class Personnage {
         // pouvoir.
     }
 
+    public boolean getDejaConstruit() {
+        return this.DejaConstruitUnTruc;
+    }
+
+    public void setDejaConstruit(boolean construit) {
+        this.DejaConstruitUnTruc = construit;
+    }
+
     public String getNom() {
         return this.nom;
     }
@@ -95,6 +103,7 @@ public abstract class Personnage {
                 return;
             }
             this.getJoueur().ajouterQuartierDansCite(nouveau);
+            this.getJoueur().retirerPieces(nouveau.coutConstruction);
             DejaConstruitUnTruc = false;
         }
         System.out.println("Vous construit un quartier dans ce tour");
@@ -108,7 +117,6 @@ public abstract class Personnage {
     }
 
     public abstract void utiliserPouvoir();
-    public abstract void utiliserPouvoirAvatar();
 
     public void reinitialiser() {
         if (this.joueur.monPersonnage != null) {
@@ -117,6 +125,14 @@ public abstract class Personnage {
         this.vole = false;
         this.assassine = false;
         this.joueur = null;
+    }
+
+    public Quartier retirerQuartierDansCite(String nom2) {
+        return null;
+    }
+
+    public Quartier[] getCite() {
+        return null;
     }
 
 }

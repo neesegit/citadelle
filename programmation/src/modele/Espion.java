@@ -4,58 +4,80 @@ import java.util.ArrayList;
 
 import controleur.Interaction;
 
-public class Espion extends Personnage{
+public class Espion extends Personnage {
 
-    private PlateauDeJeu plateau = getPlateau();
-    private Pioche pioche = plateau.getPioche();
+	private PlateauDeJeu plateau;
+	private Pioche pioche;
 
 	private ArrayList<Quartier> main = new ArrayList<Quartier>();
 
 	private String choixQuartier = "";
 	private int choixJoueur = 0;
 	private int compteur = 0;
-
+	private boolean cibleVerrouille = false;
 	private Joueur joueur;
 
 	public Espion() {
 		super("Espion", 2, Caracteristiques.ESPION);
+		this.plateau = getPlateau();
+		if (this.plateau == null) {
+			plateau = new PlateauDeJeu();
+		}
+		this.pioche = this.plateau.getPioche();
 	}
-	
+
 	@Override
 	public void utiliserPouvoir() {
 		// Choix joueur
-		for(int i = 0; i < plateau.getNombreJoueurs(); i++){
-			if(plateau.getJoueur(i) == this.getJoueur()){
+		for (int i = 0; i < plateau.getNombreJoueurs(); i++) {
+			if (plateau.getJoueur(i) == this.getJoueur()) {
 				continue;
 			}
-			System.out.println((i+1) + ". " + plateau.getJoueur(i));
+			System.out.println((i + 1) + ". " + plateau.getJoueur(i));
+		}
+		for (int i = 0; i < getPlateau().getNombreJoueurs(); i++) {
+			System.out.println(i + 1 + " " + getPlateau().getJoueur(i).getNom() + " ("
+					+ getPlateau().getJoueur(i).getPersonnage().getNom() + ")");
 		}
 
-		System.out.print("Choisissez un joueur (le chiffre devant): ");
-		choixJoueur = Interaction.lireUnEntier(1, plateau.getNombreJoueurs()) - 1;
-		joueur = plateau.getJoueur(choixJoueur);
+		while (!cibleVerrouille) {
+			System.out.print("Choisissez un joueur autre que vous (le chiffre devant): ");
+			choixJoueur = Interaction.lireUnEntier(1, getPlateau().getNombreJoueurs() + 1);
+			if (getJoueur() != getPlateau().getJoueur(choixJoueur - 1)) {
+				cibleVerrouille = true;
+			}
+		}
 
-		//Choix type de quartier
-		System.out.print("Quel type de quartier (Noble, Militaire, Religieux, Commercant ou Merveille) choisissez vous ? ");
-        choixQuartier = Interaction.lireUneChaine();
+		joueur = getPlateau().getJoueur(choixJoueur - 1);
+
+		// Choix type de quartier
+		cibleVerrouille = false;
+		while (!cibleVerrouille) {// fais une fois la boucle a vide ??
+			System.out.print(
+					"Quel type de quartier ecrire le nom (NOBLE, MILITAIRE, RELIGIEUX, COMMERCANT ou MERVEILLE) choisissez vous ? ");
+			choixQuartier = Interaction.lireUneChaine();
+			if (choixQuartier.equals("NOBLE") || choixQuartier.equals("MILITAIRE") || choixQuartier.equals("RELIGIEUX")
+					|| choixQuartier.equals("COMMERCANT") || choixQuartier.equals("MERVEILLE")) {
+				cibleVerrouille = true;
+			}
+		}
 
 		main = joueur.getMain();
-
-		for(int i = 0; i < main.size(); i++){
-			if(main.get(i).toString() == choixQuartier){
+		for (int i = 0; i < main.size(); i++) {
+			if (main.get(i).getType().equals(choixQuartier)) {
 				compteur++;
 			}
 		}
-		
-		if(compteur == 0){
+
+		if (compteur == 0) {
 			return;
 		}
-		//Don de pièce et ajout de carte dans la main
-		joueur.retirerPieces((joueur.nbPieces() < compteur?compteur - joueur.nbPieces():compteur));
-		this.getJoueur().ajouterPieces((joueur.nbPieces() < compteur?compteur - joueur.nbPieces():compteur));
-		for(int i = 0; i < compteur; i++){
+		// Don de pièce et ajout de carte dans la main
+		joueur.retirerPieces((joueur.nbPieces() < compteur ? compteur - joueur.nbPieces() : compteur));
+		this.getJoueur().ajouterPieces((joueur.nbPieces() < compteur ? compteur - joueur.nbPieces() : compteur));
+		for (int i = 0; i < compteur; i++) {
 			this.getJoueur().ajouterQuartierDansMain(pioche.piocher());
 		}
-        
+
 	}
 }

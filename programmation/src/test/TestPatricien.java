@@ -1,4 +1,3 @@
-/* 
 package test;
 
 import modele.Assassin;
@@ -90,4 +89,3 @@ public class TestPatricien {
                 "Verifier que la couronne soit bien sur l'assassin");
     }
 }
-*/

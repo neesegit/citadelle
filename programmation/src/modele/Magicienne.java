@@ -2,7 +2,6 @@ package modele;
 
 import controleur.Interaction;
 import java.util.ArrayList;
-import java.util.Random;
 
 public class Magicienne extends Personnage {
 
@@ -85,83 +84,6 @@ public class Magicienne extends Personnage {
                                 System.out.print(mainCopieMagicienne.get(a).getNom() + ", ");
                             System.out.println("\n");
                             int index = Interaction.lireUnEntier(1, mainCopieMagicienne.size() + 1);
-                            getPlateau().getPioche().ajouter(mainCopieMagicienne.get(index - 1));
-                            mainCopieMagicienne.remove(index - 1);
-                        }
-                        for (int i = 0; i < reponseNbCarte; i++) {
-                            mainCopieMagicienne.add(getPlateau().getPioche().piocher());
-                        }
-                        // vide la main
-                        for (int i = 0; i < mainCopieMagicienne.size(); i++) {
-                            getJoueur().retirerQuartierDansMain();
-                        }
-                        // remplie la main
-                        for (int i = 0; i < mainCopieMagicienne.size(); i++) {
-                            getJoueur().ajouterQuartierDansMain(mainCopieMagicienne.get(i));
-                        }
-
-                    }
-                }
-            }
-        }
-    }
-
-    @Override
-    public void utiliserPouvoirAvatar(){
-        if(!getJoueur().getMain().isEmpty()){
-            Random random=new Random();
-            while (!choix) {
-                if (random.nextBoolean()) {
-                    choix = true;
-                    while (!echange) {
-                        int id = random.nextInt(getPlateau().getNombrePersonnages())+1;
-                        cible = getPlateau().getPersonnage(id - 1);
-                        if (cible.getNom() != "Magicienne") {// je sais pas s'il y a des limite de rang a son pouvoir
-                            echange = true;
-                        }
-                    }
-                    // mtn il faut que je copie la main du joueur et de la magicienne
-                    ArrayList<Quartier> mainCopieMagicienne = (ArrayList<Quartier>) getJoueur().getMain().clone();
-                    ArrayList<Quartier> joueurMainCopie = (ArrayList<Quartier>) cible.getJoueur().getMain().clone();
-                    // on vide a main de la magicienne et de la cible
-                    for (int i = 0; i <= getJoueur().nbQuartiersDansMain(); i++) {
-                        getJoueur().retirerQuartierDansMain();
-                    }
-                    for (int i = 0; i <= cible.getJoueur().nbQuartiersDansMain() + 1; i++) {
-                        cible.getJoueur().retirerQuartierDansMain();
-                    }
-                    // on réatribut les mains
-                    for (int i = 0; i < mainCopieMagicienne.size(); i++) {
-                        cible.getJoueur().ajouterQuartierDansMain(mainCopieMagicienne.get(i));
-                    }
-                    for (int i = 0; i < joueurMainCopie.size(); i++) {
-                        getJoueur().ajouterQuartierDansMain(joueurMainCopie.get(i));
-                    }
-                } else {
-                    choix = true;
-                    int reponseNbCarte = random.nextInt(getJoueur().nbQuartiersDansMain() + 1);
-                    if (reponseNbCarte == getJoueur().nbQuartiersDansMain()) {
-                        // comme c'est son nombre de carte on bazarde tout
-                        // on vide a main de la magicienne
-                        for (int i = 0; i < reponseNbCarte; i++) { // mais du coup il choisi pas là c'est du random
-                            getPlateau().getPioche().ajouter(getJoueur().retirerQuartierDansMain());
-                        }
-                        // on réatribut les mains
-                        for (int i = 0; i < reponseNbCarte; i++) {
-                            getJoueur().ajouterQuartierDansMain(getPlateau().getPioche().piocher());
-                        }
-                    } else {
-
-                        // ici il choisi
-                        ArrayList<Quartier> mainCopieMagicienne = (ArrayList<Quartier>) getJoueur().getMain().clone();// main
-                                                                                                                      // de
-                                                                                                                      // la
-                        // créer la copie avec nouvelle carte
-                        for (int i = 0; i < reponseNbCarte; i++) {
-                            for (int a = 0; a < mainCopieMagicienne.size(); a++)
-                                System.out.print(mainCopieMagicienne.get(a).getNom() + ", ");
-                            System.out.println("\n");
-                            int index = random.nextInt(mainCopieMagicienne.size() + 1)+1;
                             getPlateau().getPioche().ajouter(mainCopieMagicienne.get(index - 1));
                             mainCopieMagicienne.remove(index - 1);
                         }

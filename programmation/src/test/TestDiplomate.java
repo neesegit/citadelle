@@ -1,6 +1,7 @@
-/*package test;
+package test;
 
 import modele.Caracteristiques;
+import modele.Diplomate;
 import modele.Eveque;
 import modele.Joueur;
 import modele.PlateauDeJeu;
@@ -9,24 +10,28 @@ import modele.Roi;
 
 public class TestDiplomate {
         public static void main(String[] args) {
-                TestCapitaine test = new TestCapitaine();
+                TestDiplomate test = new TestDiplomate();
                 // test.test1();
                 // test.test2();
                 // test.test3();
                 // test.test4();
-                // test.test5();
+                test.test5();
         }
 
         public void test1() {
                 System.out.println("TEST DU CONSTRUCTEUR");
                 Diplomate diplomate = new Diplomate();
-                Test.test(diplomate.getNom().equals("Diplomate"), "test du nom du personnage");
+                Test.test(diplomate.getNom().equals("Diplomate"),
+                                "test du nom du personnage");
                 Test.test(diplomate.getRang() == 8, "test du rang du personnage");
                 Test.test(diplomate.getCaracteristiques().equals(Caracteristiques.DIPLOMATE),
                                 "test des caracteristiques du personnage");
-                Test.test(diplomate.getJoueur() == null, "test de l'initialisation de la variable \"joueur\"");
-                Test.test(diplomate.getAssassine() == false, "test de l'initialisation de la variable \"assassine\"");
-                Test.test(diplomate.getVole() == false, "test de l'initialisation de la variable \"vole\"");
+                Test.test(diplomate.getJoueur() == null,
+                                "test de l'initialisation de la variable \"joueur\"");
+                Test.test(diplomate.getAssassine() == false,
+                                "test de l'initialisation de la variable \"assassine\"");
+                Test.test(diplomate.getVole() == false,
+                                "test de l'initialisation de la variable \"vole\"");
         }
 
         public void test2() {
@@ -40,7 +45,9 @@ public class TestDiplomate {
                 Roi roi = new Roi();
                 diplomate.setJoueur(joueur);
                 roi.setJoueur(joueur2);
-                Test.test(plateau.getNombrePersonnages() == 2, "nombre de joueurs");
+                diplomate.setPlateau(plateau);
+                roi.setPlateau(plateau);
+                Test.test(plateau.getNombreJoueurs() == 2, "nombre de joueurs");
                 diplomate.ajouterPieces();
                 diplomate.ajouterPieces();
                 Quartier quartier1 = new Quartier("temple", Quartier.TYPE_QUARTIERS[0], 1);
@@ -58,7 +65,8 @@ public class TestDiplomate {
                                 "nombre de quartier chez le roi avant de commencer");
                 Test.test(diplomate.getJoueur().nbQuartiersDansCite() == 1,
                                 "nombre de quartier chez le diplomate avant de commencer");
-                Test.test(diplomate.getJoueur().nbPieces() == 4, "nombre de piece de le diplomate avant de commencer");
+                Test.test(diplomate.getJoueur().nbPieces() == 4,
+                                "nombre de piece de le diplomate avant de commencer");
                 diplomate.percevoirRessourcesSpecifiques();
                 Test.test(diplomate.getJoueur().nbPieces() == 5,
                                 "nombre de piece de le diplomate apres perception des ressources");
@@ -115,7 +123,9 @@ public class TestDiplomate {
                 Roi roi = new Roi();
                 diplomate.setJoueur(joueur);
                 roi.setJoueur(joueur2);
-                Test.test(plateau.getNombrePersonnages() == 2, "nombre de joueurs");
+                diplomate.setPlateau(plateau);
+                roi.setPlateau(plateau);
+                Test.test(plateau.getNombreJoueurs() == 2, "nombre de joueurs");
                 Quartier quartier1 = new Quartier("temple", Quartier.TYPE_QUARTIERS[0], 1);
                 Quartier quartier5 = new Quartier("caserne", Quartier.TYPE_QUARTIERS[1], 3);
                 roi.getJoueur().ajouterQuartierDansCite(quartier5);
@@ -124,7 +134,8 @@ public class TestDiplomate {
                                 "nombre de quartier chez le roi avant de commencer");
                 Test.test(diplomate.getJoueur().nbQuartiersDansCite() == 1,
                                 "nombre de quartier chez le diplomate avant de commencer");
-                Test.test(diplomate.getJoueur().nbPieces() == 0, "nombre de piece du diplomate avant de commencer");
+                Test.test(diplomate.getJoueur().nbPieces() == 0,
+                                "nombre de piece du diplomate avant de commencer");
                 diplomate.percevoirRessourcesSpecifiques();
                 Test.test(diplomate.getJoueur().nbPieces() == 0,
                                 "nombre de piece de la capitaine apres perception des ressources");
@@ -132,7 +143,8 @@ public class TestDiplomate {
                 // verifier que je peux bien ne pas faire d'echange due à la différence de prix
                 Test.test(diplomate.getJoueur().nbQuartiersDansCite() == 1,
                                 "nombre de quartier chez le diplomate apres pouvoir sans or");
-                Test.test(diplomate.getJoueur().nbPieces() == 0, "nombre de piece du diplomate apres pouvoir sans or");
+                Test.test(diplomate.getJoueur().nbPieces() == 0,
+                                "nombre de piece du diplomate apres pouvoir sans or");
                 Test.test(roi.getJoueur().nbQuartiersDansCite() == 1,
                                 "nombre de quartier chez le roi apres pouvoir diplomate sans or");
         }
@@ -148,7 +160,9 @@ public class TestDiplomate {
                 Eveque eveque = new Eveque();
                 diplomate.setJoueur(joueur);
                 eveque.setJoueur(joueur2);
-                Test.test(plateau.getNombrePersonnages() == 2, "nombre de joueurs");
+                eveque.setPlateau(plateau);
+                diplomate.setPlateau(plateau);
+                Test.test(plateau.getNombreJoueurs() == 2, "nombre de joueurs");
                 Quartier quartier1 = new Quartier("temple", Quartier.TYPE_QUARTIERS[0], 1);
                 eveque.getJoueur().ajouterQuartierDansCite(quartier1);
                 Quartier quartier5 = new Quartier("caserne", Quartier.TYPE_QUARTIERS[1], 3);
@@ -158,10 +172,8 @@ public class TestDiplomate {
                 Test.test(diplomate.getJoueur().nbQuartiersDansCite() == 1,
                                 "nombre de quartier chez le diplomate avant de commencer");
                 diplomate.ajouterPieces();
-                Test.test(diplomate.getJoueur().nbPieces() == 2, "nombre de piece du diplomate avant de commencer");
-                diplomate.percevoirRessourcesSpecifiques();
                 Test.test(diplomate.getJoueur().nbPieces() == 2,
-                                "nombre de piece du diplomate apres perception des ressources");
+                                "nombre de piece du diplomate avant de commencer");
                 diplomate.utiliserPouvoir();
                 Test.test(diplomate.getJoueur().nbQuartiersDansCite() == 1,
                                 "nombre de quartier chez le diplomate counter par l'eveque");
@@ -182,7 +194,9 @@ public class TestDiplomate {
                 Roi roi = new Roi();
                 diplomate.setJoueur(joueur);
                 roi.setJoueur(joueur2);
-                Test.test(plateau.getNombrePersonnages() == 2, "nombre de joueurs");
+                roi.setPlateau(plateau);
+                diplomate.setPlateau(plateau);
+                Test.test(plateau.getNombreJoueurs() == 2, "nombre de joueurs");
                 Quartier quartier5 = new Quartier("caserne", Quartier.TYPE_QUARTIERS[1], 3);
                 roi.getJoueur().ajouterQuartierDansCite(quartier5);
                 diplomate.ajouterPieces();
@@ -190,7 +204,8 @@ public class TestDiplomate {
                                 "nombre de quartier chez le roi avant de commencer");
                 Test.test(diplomate.getJoueur().nbQuartiersDansCite() == 0,
                                 "nombre de quartier chez le diplomate avant de commencer");
-                Test.test(diplomate.getJoueur().nbPieces() == 2, "nombre de piece du diplomate avant de commencer");
+                Test.test(diplomate.getJoueur().nbPieces() == 2,
+                                "nombre de piece du diplomate avant de commencer");
                 diplomate.percevoirRessourcesSpecifiques();
                 Test.test(diplomate.getJoueur().nbPieces() == 2,
                                 "nombre de piece de la capitaine apres perception des ressources");
@@ -204,4 +219,3 @@ public class TestDiplomate {
                                 "nombre de quartier chez le roi apres pouvoir diplomate sans quartier");
         }
 }
- */

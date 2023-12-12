@@ -1,4 +1,3 @@
-/*
 package test;
 
 import modele.Caracteristiques;
@@ -69,4 +68,3 @@ public class TestAlchimiste {
         // le pouvoir ne peut être utiliser qu'une seul fois
     }
 }
-*/

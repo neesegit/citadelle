@@ -12,9 +12,9 @@ import modele.Roi;
 
 public class TestEspion {
     public static void main(String[] args) {
-        TestNavigatrice test = new TestNavigatrice();
+        TestEspion test = new TestEspion();
         // test.test1();
-        // test.test2();
+        test.test2();
     }
 
     public void test1() {
@@ -34,6 +34,10 @@ public class TestEspion {
         PlateauDeJeu plateau = new PlateauDeJeu();
         Roi roi = new Roi();
         Espion espion = new Espion();
+        espion.setPlateau(plateau);
+        roi.setPlateau(plateau);
+        System.out.println(espion.getPlateau());
+        System.out.println(roi.getPlateau());
         Joueur joueur1 = new Joueur("Billy");
         plateau.ajouterJoueur(joueur1);
         Joueur joueur2 = new Joueur("Martin");
@@ -90,7 +94,6 @@ public class TestEspion {
         System.out.println("");
 
         // on recupere la taille de la pioche:
-        int taillePiocheAvantPouvoir = pioche.nombreElements();
         roi.ajouterPieces();
         espion.ajouterPieces();
         Test.test(espion.getJoueur().nbPieces() == 2, "test du nombre de pieces d'or avant pouvoir");
