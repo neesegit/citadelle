@@ -32,7 +32,7 @@ public class Interaction {
 			// "+borneMax+"[ : ");
 			if (sc.hasNextInt()) {
 				i = sc.nextInt();
-				if (i >= borneMin && i <= borneMax) {
+				if (i >= borneMin && i < borneMax) {
 					saisieValide = true;
 				} else {
 					System.out.println("L'entier doit être dans l'intervalle [" + borneMin + ", " + borneMax +"].");

@@ -84,7 +84,7 @@ public class Jeu {
                 this.m_plateauDeJeu.getJoueur(i).ajouterQuartierDansMain(pioche.piocher());
             }
         }
-        this.m_plateauDeJeu.getJoueur(m_generateur.nextInt(this.m_plateauDeJeu.getNombreJoueurs())-1).setPossedeCouronne(true);
+        this.m_plateauDeJeu.getJoueur(m_generateur.nextInt(this.m_plateauDeJeu.getNombreJoueurs())).setPossedeCouronne(true);
         System.out.print("Initialisation terminée");
     }
 
