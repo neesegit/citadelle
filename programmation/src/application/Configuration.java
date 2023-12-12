@@ -69,8 +69,6 @@ public class Configuration {
     private static Quartier poudriere = new Quartier("Poudri", Quartier.TYPE_QUARTIERS[4], 3);
     private static Quartier theatre = new Quartier("Théâtre", Quartier.TYPE_QUARTIERS[4], 6);
     private static Quartier tour_divoire = new Quartier("Tour d’Ivoire", Quartier.TYPE_QUARTIERS[4], 6);
-	
-    private static Joueur joueur = new Joueur("Steve");
     
 	public static Pioche nouvellePioche() {
 		
@@ -124,6 +122,7 @@ public class Configuration {
 		System.out.println("Combien de joueur(s) pour cette partie (max : 9) ?");
         int nbJoueur=Interaction.lireUnEntier(1, 9);
         for(int i=0;i<nbJoueur;i++){
+            System.out.println();
             System.out.print("Entrez le nom du joueur " + (i + 1) + " : ");
             String nomDuJoueur=Interaction.lireUneChaine();
             Joueur nouveauJoueur=new Joueur(nomDuJoueur);
