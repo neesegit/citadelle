@@ -6,5 +6,4 @@ public class Application {
         Jeu jeu = new Jeu();
         jeu.jouer();
     }
-	
 }

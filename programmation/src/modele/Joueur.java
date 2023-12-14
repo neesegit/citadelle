@@ -7,6 +7,7 @@ import java.util.Random;
 
 public class Joueur {
 
+    private int points=0;
     private String nom;
     private int tresor;
     private Quartier[] cite;
@@ -34,6 +35,12 @@ public class Joueur {
         this.possedeCatacombes = false;
     }
 
+    public void setPoints(int pts){
+        this.points=pts;
+    }
+    public int getPoints(){
+        return this.points;
+    }
     public boolean isBot(){
         return this.bot;
     }
@@ -211,8 +218,8 @@ public class Joueur {
     }
 
 
-    public void ajouterPoints(int pointsBasilique) {
-    }
+    /*public void ajouterPoints(int pointsBasilique) {
+    }*/
 
     public void setEffetCapitoleUtilise(boolean b) {
     }

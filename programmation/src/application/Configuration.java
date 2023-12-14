@@ -4,13 +4,22 @@ import controleur.Interaction;
 import modele.*;
 
 public class Configuration {
-	
+
+    private static Personnage abbe=new Abbe();
+    private static Personnage alchimiste=new Alchimiste();
+    private static Personnage archiviste=new Archiviste();
     private static Personnage assassin = new Assassin();
     private static Personnage architecte = new Architecte();
+    private static Personnage capitaine=new Capitaine();
+    private static Personnage cardinal=new Cardinal();
     private static Personnage condotierre = new Condottiere();
+    private static Personnage diplomate=new Diplomate();
     private static Personnage eveque = new Eveque();
+    private static Personnage espion=new Espion();
     private static Personnage magicienne = new Magicienne();
     private static Personnage marchande = new Marchande();
+    private static Personnage negociant=new Negociant();
+    private static Personnage navigatrice=new Navigatrice();
     private static Personnage roi = new Roi();
     private static Personnage voleur = new Voleur();
     
@@ -117,8 +126,15 @@ public class Configuration {
 		plateauDeJeu.ajouterPersonnage(marchande);
 		plateauDeJeu.ajouterPersonnage(roi);
 		plateauDeJeu.ajouterPersonnage(voleur);
-
-		
+        plateauDeJeu.ajouterPersonnage(abbe);
+        plateauDeJeu.ajouterPersonnage(alchimiste);
+        plateauDeJeu.ajouterPersonnage(archiviste);
+        plateauDeJeu.ajouterPersonnage(capitaine);
+        plateauDeJeu.ajouterPersonnage(cardinal);
+        plateauDeJeu.ajouterPersonnage(diplomate);
+        plateauDeJeu.ajouterPersonnage(espion);
+        plateauDeJeu.ajouterPersonnage(navigatrice);
+        plateauDeJeu.ajouterPersonnage(negociant);
 
 		System.out.println("Combien de joueur(s) pour cette partie (max : 9) ?");
         int nbJoueur=Interaction.lireUnEntier(1, 9);
@@ -154,7 +170,32 @@ public class Configuration {
         marchande.setPlateau(plateauDeJeu);
         roi.setPlateau(plateauDeJeu);
         voleur.setPlateau(plateauDeJeu);
+        abbe.setPlateau(plateauDeJeu);
+        alchimiste.setPlateau(plateauDeJeu);
+        archiviste.setPlateau(plateauDeJeu);
+        capitaine.setPlateau(plateauDeJeu);
+        cardinal.setPlateau(plateauDeJeu);
+        diplomate.setPlateau(plateauDeJeu);
+        espion.setPlateau(plateauDeJeu);
+        negociant.setPlateau(plateauDeJeu);
+        navigatrice.setPlateau(plateauDeJeu);
 
+        pioche.ajouter(necropole);
+        pioche.ajouter(observatoire);
+        pioche.ajouter(parc);
+        pioche.ajouter(poudriere);
+        pioche.ajouter(theatre);
+        pioche.ajouter(tour_divoire);
+        pioche.ajouter(musee);
+        pioche.ajouter(mine_dor);
+        pioche.ajouter(monument);
+        pioche.ajouter(basilique);
+        pioche.ajouter(capitole);
+        pioche.ajouter(catacombes);
+        pioche.ajouter(chantier);
+        pioche.ajouter(ecuries);
+        pioche.ajouter(grande_muraille);
+        pioche.ajouter(hospice);
         pioche.ajouter(bibliotheque);
         pioche.ajouter(forge);
         pioche.ajouter(carriere);
