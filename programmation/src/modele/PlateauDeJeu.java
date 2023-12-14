@@ -11,13 +11,18 @@ public class PlateauDeJeu {
     public PlateauDeJeu() {
 
         this.listeJoueurs = new Joueur[9];
-        this.listePersonnage = new Personnage[9];
+        this.listePersonnage = new Personnage[17];
         this.pioche = new Pioche();
         this.nombrePersonnages = 0;
         this.nombreJoueurs = 0;
 
     }
-
+    public void permuterJoueur(int indiceJoueurDernierEmplacementDuTableau,int indiceJoueurDissident){
+        Joueur joueurDernierEmplacementDuTableau=this.listeJoueurs[indiceJoueurDernierEmplacementDuTableau];
+        Joueur joueurDissident=this.listeJoueurs[indiceJoueurDissident];
+        this.listeJoueurs[indiceJoueurDernierEmplacementDuTableau]=joueurDissident;
+        this.listeJoueurs[indiceJoueurDissident]=joueurDernierEmplacementDuTableau;
+    }
     public Quartier[] getQuartiersDuJoueur(Joueur joueur) {
         for (Joueur j : listeJoueurs) {
             if (j.equals(joueur)) {

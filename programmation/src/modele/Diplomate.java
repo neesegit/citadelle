@@ -23,8 +23,6 @@ public class Diplomate extends Personnage {
 
     public Diplomate() {
         super("Diplomate", 8, Caracteristiques.DIPLOMATE);
-        this.quartierJoueur = getJoueur().getCite();
-
     }
 
     @Override
